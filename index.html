@@ -84,11 +84,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><a href="http://www.tomorjm.com/year/11/25/iOS%E5%BA%94%E7%94%A8%E5%86%85%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%E7%9A%84%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/" target="_blank" rel="noopener">参考链接</a><br><a href="https://www.jianshu.com/p/88c1b65e3ddb" target="_blank" rel="noopener">图片</a></p>
+<p>本文档提供了以下问题的解决方案：</p>
+<ol>
+<li>如何进行国际化配置</li>
+<li>应用名称AppName国际化</li>
+<li>文本国际化</li>
+<li>图片国际化</li>
+<li>App内语言切换</li>
+<li>Xib/Storyboard国际化、xib文件更新</li>
+<li>针对组件化的项目形式所需注意点</li>
+<li>针对多人协作问题</li>
+<li>国际化调试、测试</li>
+<li>脚本</li>
+<li>解析系统国际化方法</li>
+</ol>
+<h2 id="国际化配置"><a href="#国际化配置" class="headerlink" title="国际化配置"></a>国际化配置</h2><p>选中project-&gt;Info-&gt;Localizations，然后点击”+”，添加需要国际化/本地化的语言</p>
+<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/添加国际化语言配置.png" alt=""></p>
+<h2 id="应用名称AppName国际化"><a href="#应用名称AppName国际化" class="headerlink" title="应用名称AppName国际化"></a>应用名称AppName国际化</h2><p>创建名称为InfoPlist的文件，选中InfoPlist.strings，在Xcode右侧点击Localize，选择需要本地化的语言</p>
+<p>在各语言InfoPlist.strings中设置AppName</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CFBundleDisplayName = &quot;Localizable App Name&quot;;</span><br></pre></td></tr></table></figure>
+<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/项目名称国际化.png" alt=""></p>
+<p>AppName国际化即已完成</p>
+<h2 id="字符串文本国际化"><a href="#字符串文本国际化" class="headerlink" title="字符串文本国际化"></a>字符串文本国际化</h2><p>创建名称为Localizable的文件，选中Localizable.strings，在Xcode右侧点击Localize，选择需要本地化的语言</p>
+<p>在Localizable.strings下对应的文件中，分别以Key-Value的形式，为代码中每一个需要本地化的字符串赋值<br><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/国际化文本.png" alt=""></p>
+<p>字符串国际化即已完成</p>
+<h2 id="图片国际化"><a href="#图片国际化" class="headerlink" title="图片国际化"></a>图片国际化</h2><p>有两种方式，第一种方式和国际化字符串一样，在Localizable.string中添加不同语言下对应的图片，调用时根据LocalizedString获取相应的image名称，获取图片。</p>
+<p>第二种方式</p>
+<h2 id="App内语言切换"><a href="#App内语言切换" class="headerlink" title="App内语言切换"></a>App内语言切换</h2><p>App内语言切换有两种实现方法：</p>
+<ol>
+<li><p>切换语言时发送通知，所有的UI控件监听通知，然后刷新UI，类似于新浪微博实现，对于已有项目进行处理时较复杂</p>
+</li>
+<li><p>切换语言时，刷新keyWindow的rootViewController，类似微信的做法</p>
+</li>
+</ol>
+<p>针对刷新rootViewController这种，有以下两种设计思路：</p>
+<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/国际化方案.png" alt=""></p>
+<p>方案一与方案二的区别在于：方案二不能在xib中对文本直接赋值，只能通过代码，因为在xib初始化时默认调用NSBundle.mainBundle所对应的资源。也因此有了方案一，通过把NSBundle.mainBundle()替换成当前语言的bundle的方式来支持xib。</p>
+<p>可根据项目的实际情况，如果都使用代码来为控件赋值的时候，建议使用方案二。</p>
+<h2 id="Xib-Storyboard国际化"><a href="#Xib-Storyboard国际化" class="headerlink" title="Xib/Storyboard国际化"></a>Xib/Storyboard国际化</h2><p>选中xib/Storyboard文件，在Xcode右侧点击Localize，选择需要本地化的语言，在string文件中，给各语言环境下的控件进行赋值</p>
+<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/xib国际化.png" alt=""></p>
+<p>关于xib、storyboard中，国际化的key是一次性生成的，如果存在增加新控件时，需要重新生成，针对这个问题，添加脚本</p>
+<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/脚本.jpeg" alt=""></p>
+<p><a href="">脚本链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">python <span class="variable">$&#123;SRCROOT&#125;</span>/<span class="variable">$&#123;TARGET_NAME&#125;</span>/RunScript/AutoGenStrings.py <span class="variable">$&#123;SRCROOT&#125;</span>/<span class="variable">$&#123;TARGET_NAME&#125;</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/iOS项目国际化/" data-id="cjodxg8bx0001ya7x01gzwjcz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/iOS项目国际化/" data-id="cjoeaz3oh00014j23ujlcvxle" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/hello-world/" data-id="cjodxg8bs0000ya7xkkcahxj7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/hello-world/" data-id="cjoeaz3oc00004j23wht7hxf2" class="article-share-link">Share</a>
       
       
     </footer>
