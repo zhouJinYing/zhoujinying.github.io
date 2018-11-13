@@ -7,24 +7,26 @@
   
   <title>iOS项目国际化 | Romantic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考链接图片 本文档提供了以下问题的解决方案：  如何进行国际化配置 应用名称AppName国际化 文本国际化 图片国际化 App内语言切换 Xib/Storyboard国际化、xib文件更新 针对组件化的项目形式所需注意点 针对多人协作问题 国际化调试、测试 脚本 解析系统国际化方法  国际化配置选中project-&amp;gt;Info-&amp;gt;Localizations，然后点击”+”，添加需要国">
+  <meta name="description" content="本文档针对以下问题进行了说明：  系统方法解读 如何进行国际化配置 应用名称AppName国际化 文本国际化 图片国际化 App内语言切换设计 Xib/Storyboard国际化 批量处理 国际化调试、测试  系统方法解读NSLocalizedString(_ key: String, tableName: String? = default, bundle: Bundle = default,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS项目国际化">
 <meta property="og:url" content="http://yoursite.com/2018/11/12/iOS项目国际化/index.html">
 <meta property="og:site_name" content="Romantic">
-<meta property="og:description" content="参考链接图片 本文档提供了以下问题的解决方案：  如何进行国际化配置 应用名称AppName国际化 文本国际化 图片国际化 App内语言切换 Xib/Storyboard国际化、xib文件更新 针对组件化的项目形式所需注意点 针对多人协作问题 国际化调试、测试 脚本 解析系统国际化方法  国际化配置选中project-&amp;gt;Info-&amp;gt;Localizations，然后点击”+”，添加需要国">
+<meta property="og:description" content="本文档针对以下问题进行了说明：  系统方法解读 如何进行国际化配置 应用名称AppName国际化 文本国际化 图片国际化 App内语言切换设计 Xib/Storyboard国际化 批量处理 国际化调试、测试  系统方法解读NSLocalizedString(_ key: String, tableName: String? = default, bundle: Bundle = default,">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/添加国际化语言配置.png">
-<meta property="og:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/项目名称国际化.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/添加国际化语言配置.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/项目名称国际化.png">
 <meta property="og:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/国际化文本.png">
-<meta property="og:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/国际化方案.png">
-<meta property="og:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/xib国际化.png">
-<meta property="og:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/脚本.jpeg">
-<meta property="og:updated_time" content="2018-11-12T12:49:21.506Z">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/image.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/国际化方案.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/xib国际化.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/脚本.jpeg">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/test.jpeg">
+<meta property="og:updated_time" content="2018-11-13T03:19:51.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS项目国际化">
-<meta name="twitter:description" content="参考链接图片 本文档提供了以下问题的解决方案：  如何进行国际化配置 应用名称AppName国际化 文本国际化 图片国际化 App内语言切换 Xib/Storyboard国际化、xib文件更新 针对组件化的项目形式所需注意点 针对多人协作问题 国际化调试、测试 脚本 解析系统国际化方法  国际化配置选中project-&amp;gt;Info-&amp;gt;Localizations，然后点击”+”，添加需要国">
-<meta name="twitter:image" content="http://yoursite.com/Users/jinying.zhou.o/Desktop/未命名文件夹/添加国际化语言配置.png">
+<meta name="twitter:description" content="本文档针对以下问题进行了说明：  系统方法解读 如何进行国际化配置 应用名称AppName国际化 文本国际化 图片国际化 App内语言切换设计 Xib/Storyboard国际化 批量处理 国际化调试、测试  系统方法解读NSLocalizedString(_ key: String, tableName: String? = default, bundle: Bundle = default,">
+<meta name="twitter:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/添加国际化语言配置.png">
   
     <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
   
@@ -74,7 +76,7 @@
         <section id="main"><article id="post-iOS项目国际化" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/12/iOS项目国际化/" class="article-date">
-  <time datetime="2018-11-12T06:28:45.848Z" itemprop="datePublished">2018-11-12</time>
+  <time datetime="2018-11-12T06:28:45.000Z" itemprop="datePublished">2018-11-12</time>
 </a>
     
   </div>
@@ -93,33 +95,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://www.tomorjm.com/year/11/25/iOS%E5%BA%94%E7%94%A8%E5%86%85%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%E7%9A%84%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/" target="_blank" rel="noopener">参考链接</a><br><a href="https://www.jianshu.com/p/88c1b65e3ddb" target="_blank" rel="noopener">图片</a></p>
-<p>本文档提供了以下问题的解决方案：</p>
+        <p>本文档针对以下问题进行了说明：</p>
 <ol>
+<li>系统方法解读</li>
 <li>如何进行国际化配置</li>
 <li>应用名称AppName国际化</li>
 <li>文本国际化</li>
 <li>图片国际化</li>
-<li>App内语言切换</li>
-<li>Xib/Storyboard国际化、xib文件更新</li>
-<li>针对组件化的项目形式所需注意点</li>
-<li>针对多人协作问题</li>
+<li>App内语言切换设计</li>
+<li>Xib/Storyboard国际化</li>
+<li>批量处理</li>
 <li>国际化调试、测试</li>
-<li>脚本</li>
-<li>解析系统国际化方法</li>
 </ol>
+<h2 id="系统方法解读"><a href="#系统方法解读" class="headerlink" title="系统方法解读"></a>系统方法解读</h2><p>NSLocalizedString(_ key: String, tableName: String? = default, bundle: Bundle = default, value: String = default, comment: String) -&gt; String</p>
+<p>key: 需要本地化的字符串对应的键值</p>
+<p>tableName: 指定在相应的lproj文件中的tableName.string文件中查找文字资源,如果传入<br>null，则在Localizable.strings中查找</p>
+<p>bundle: 语言文件所在的bundle</p>
+<p>value: 默认值,如果本地化资源文件中没有找到对应的 key 则返回这个值</p>
+<p>commit: 可传nil,是对key的注释</p>
 <h2 id="国际化配置"><a href="#国际化配置" class="headerlink" title="国际化配置"></a>国际化配置</h2><p>选中project-&gt;Info-&gt;Localizations，然后点击”+”，添加需要国际化/本地化的语言</p>
-<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/添加国际化语言配置.png" alt=""></p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/添加国际化语言配置.png" alt=""></p>
 <h2 id="应用名称AppName国际化"><a href="#应用名称AppName国际化" class="headerlink" title="应用名称AppName国际化"></a>应用名称AppName国际化</h2><p>创建名称为InfoPlist的文件，选中InfoPlist.strings，在Xcode右侧点击Localize，选择需要本地化的语言</p>
 <p>在各语言InfoPlist.strings中设置AppName</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CFBundleDisplayName = &quot;Localizable App Name&quot;;</span><br></pre></td></tr></table></figure>
-<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/项目名称国际化.png" alt=""></p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/项目名称国际化.png" alt=""></p>
 <p>AppName国际化即已完成</p>
 <h2 id="字符串文本国际化"><a href="#字符串文本国际化" class="headerlink" title="字符串文本国际化"></a>字符串文本国际化</h2><p>创建名称为Localizable的文件，选中Localizable.strings，在Xcode右侧点击Localize，选择需要本地化的语言</p>
 <p>在Localizable.strings下对应的文件中，分别以Key-Value的形式，为代码中每一个需要本地化的字符串赋值<br><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/国际化文本.png" alt=""></p>
 <p>字符串国际化即已完成</p>
 <h2 id="图片国际化"><a href="#图片国际化" class="headerlink" title="图片国际化"></a>图片国际化</h2><p>有两种方式，第一种方式和国际化字符串一样，在Localizable.string中添加不同语言下对应的图片，调用时根据LocalizedString获取相应的image名称，获取图片。</p>
-<p>第二种方式</p>
+<p>第二种方式，是对图片进行Localize，大量的文章都说可以通过这种方式，经过多次尝试，始终获取不到此图片，还正在解决中…</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/image.png" alt=""></p>
 <h2 id="App内语言切换"><a href="#App内语言切换" class="headerlink" title="App内语言切换"></a>App内语言切换</h2><p>App内语言切换有两种实现方法：</p>
 <ol>
 <li><p>切换语言时发送通知，所有的UI控件监听通知，然后刷新UI，类似于新浪微博实现，对于已有项目进行处理时较复杂</p>
@@ -128,20 +134,44 @@
 </li>
 </ol>
 <p>针对刷新rootViewController这种，有以下两种设计思路：</p>
-<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/国际化方案.png" alt=""></p>
-<p>方案一与方案二的区别在于：方案二不能在xib中对文本直接赋值，只能通过代码，因为在xib初始化时默认调用NSBundle.mainBundle所对应的资源。也因此有了方案一，通过把NSBundle.mainBundle()替换成当前语言的bundle的方式来支持xib。</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/国际化方案.png" alt=""></p>
+<p>方案一与方案二的区别在于：方案二不能在xib中对文本直接赋值，只能通过代码，因为在xib赋值时无法指定bundle，导致应用内语言切换时xib不生效</p>
+<p>也因此有了方案一，利用runtime机制，自定义一个继承自NSBundle的子类,我们称它为CustomBundle,在运行时利用object_setClass将NSBundle替换为CustomBundle<br>在这个CustomBundle中重写上面的那个localizedStringForKey方法,然后在这个重写的方法里拦截系统的调用。这个LanguageBundle的作用如下:</p>
+<ol>
+<li><p>替换NSBundle,让原本是localizedStringForKey的调用者的NSBundle,换为了LanguageBundle</p>
+</li>
+<li><p>在调用到localizedStringForKey的时候,可以对其实现高度定制,同时又可以让其父类NSBundle依旧执行该方法,只需super调用即可通过把NSBundle.mainBundle()替换成当前语言的bundle的方式来支持xib。</p>
+</li>
+</ol>
 <p>可根据项目的实际情况，如果都使用代码来为控件赋值的时候，建议使用方案二。</p>
 <h2 id="Xib-Storyboard国际化"><a href="#Xib-Storyboard国际化" class="headerlink" title="Xib/Storyboard国际化"></a>Xib/Storyboard国际化</h2><p>选中xib/Storyboard文件，在Xcode右侧点击Localize，选择需要本地化的语言，在string文件中，给各语言环境下的控件进行赋值</p>
-<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/xib国际化.png" alt=""></p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/xib国际化.png" alt=""></p>
 <p>关于xib、storyboard中，国际化的key是一次性生成的，如果存在增加新控件时，需要重新生成，针对这个问题，添加脚本</p>
-<p><img src="/Users/jinying.zhou.o/Desktop/未命名文件夹/脚本.jpeg" alt=""></p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/脚本.jpeg" alt=""></p>
+<p><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/LocalizingYourApp/LocalizingYourApp.html" target="_blank" rel="noopener">官方xib/storyboard文档</a></p>
 <p><a href="">脚本链接</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">python <span class="variable">$&#123;SRCROOT&#125;</span>/<span class="variable">$&#123;TARGET_NAME&#125;</span>/RunScript/AutoGenStrings.py <span class="variable">$&#123;SRCROOT&#125;</span>/<span class="variable">$&#123;TARGET_NAME&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="批量处理"><a href="#批量处理" class="headerlink" title="批量处理"></a>批量处理</h2><p>####项目中文批量生成到Localizable.strings<br>针对已有项目，如果逐个文件进行替换无非要花费大量的时间，运用以下方法可进行批量替换</p>
+<ol>
+<li><p>Command+Shift+F，进入全局搜索引擎，切换为Replace模式，并把匹配模式改为Regular Expression</p>
+</li>
+<li><p>在搜索条件里输入(@”[“]<em>[\u4E00-\u9FA5]+[“\n]</em>?”)，在下面替换内容里输入NSLocalizedString($1, nil)</p>
+</li>
+<li><p>点击Replace All，即可完成替换。</p>
+</li>
+<li><p>cd 工程目录<br>mkdir en.lproj<br>mkdir zh-Hans.lproj<br>find . -name <em>.m | xargs genstrings -o en.lproj<br>find . -name </em>.m | xargs genstrings -o zh-Hans.lproj<br>此时，en.lproj和zh-Hans.lproj文件夹中就有了相应的Localizable.string文件</p>
+</li>
+</ol>
+<h2 id="国际化调试"><a href="#国际化调试" class="headerlink" title="国际化调试"></a>国际化调试</h2><p>在国际化测试时，可以通过在Edit Scheme中选择特定语言。</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/test.jpeg" alt=""></p>
+<p><a href="http://www.tomorjm.com/year/11/25/iOS%E5%BA%94%E7%94%A8%E5%86%85%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%E7%9A%84%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/" target="_blank" rel="noopener">iOS应用内多语言切换的奇思妙想</a></p>
+<p><a href="https://www.jianshu.com/p/88c1b65e3ddb" target="_blank" rel="noopener">3分钟实现iOS语言本地化/国际化</a></p>
+<p><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/TestingYourInternationalApp/TestingYourInternationalApp.html#//apple_ref/doc/uid/10000171i-CH7-SW1" target="_blank" rel="noopener">国际化和本地化指南-苹果官方文档</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/iOS项目国际化/" data-id="cjof61iws0001i3aagfx0slzw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/iOS项目国际化/" data-id="cjof63ttp0001q3aa1f2dt8n0" class="article-share-link">Share</a>
       
       
     </footer>
