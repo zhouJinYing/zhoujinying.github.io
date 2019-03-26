@@ -243,6 +243,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/test/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhouJinYing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romantic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/26/test/" itemprop="url">test</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-26T16:01:37+08:00">
+                2019-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="React-Code-View"><a href="#React-Code-View" class="headerlink" title="React Code View"></a>React Code View</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>让 Markdown 中的代码可以实时运行，为什么会有这样一个需求？</p>
+<p>很多前端团队技术相关的文档都采用 Markdown 编写， 文档中往往会伴随很多示例代码，我们希望大家在阅读文档的时候，可以运行示例代码，看到效果。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>Markdown 中的代码可以运行，并预览效果</li>
+<li>代码可以在线编辑</li>
+<li>不影响整个文档流的布局</li>
+<li>支持 React, 支持代码高亮</li>
+</ul>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><!--start-code-->
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> instance = &lt;Button&gt;Test&lt;/Button&gt;;</span><br><span class="line">ReactDOM.render(instance);</span><br></pre></td></tr></table></figure>
+<!--end-code-->
+<blockquote>
+<p>可以试着手动修改代码</p>
+</blockquote>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CodeView <span class="keyword">from</span> <span class="string">'react-code-view'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'react-code-view/lib/less/index.less'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'rsuite'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;CodeView dependencies=&#123;&#123; Button &#125;&#125; &gt;</span><br><span class="line">  &#123;<span class="built_in">require</span>(<span class="string">'./example.md'</span>)&#125;</span><br><span class="line">&lt;<span class="regexp">/CodeView&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="theme-string"><a href="#theme-string" class="headerlink" title="theme string"></a><code>theme</code> <code>string</code></h3><p>设置主题，可选项： ‘light’, ‘dark’</p>
+<p>默认值：’light’</p>
+<h3 id="dependencies-Object"><a href="#dependencies-Object" class="headerlink" title="dependencies Object"></a><code>dependencies</code> <code>Object</code></h3><p>依赖的资源</p>
+<h3 id="showCode-boolean"><a href="#showCode-boolean" class="headerlink" title="showCode boolean"></a><code>showCode</code> <code>boolean</code></h3><p>显示代码</p>
+<p>默认值: true</p>
+<h3 id="babelTransformOptions-Object"><a href="#babelTransformOptions-Object" class="headerlink" title="babelTransformOptions Object"></a><code>babelTransformOptions</code> <code>Object</code></h3><p>babel 配置参数 <a href="https://babeljs.io/docs/usage/api/#options" target="_blank" rel="noopener">options</a></p>
+<p>默认值: { presets: [‘stage-0’, ‘react’, ‘es2015’] }</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><ul>
+<li>Github: <a href="https://github.com/simonguo/react-code-view" target="_blank" rel="noopener">react-code-view</a></li>
+<li>Markdown 源文件: <a href="https://raw.githubusercontent.com/simonguo/react-code-view/master/docs/example.md" target="_blank" rel="noopener">example.md</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/String总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhouJinYing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romantic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/18/String总结/" itemprop="url">String总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-18T16:57:21+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 获取String字符串长度</span></span><br><span class="line">str.<span class="built_in">count</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// 截取第一个关键字之前的内容</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"Marie Curie"</span></span><br><span class="line"><span class="keyword">let</span> firstSpace = name.firstIndex(of: <span class="string">" "</span>) ?? name.endIndex</span><br><span class="line"><span class="keyword">let</span> firstName = name[..&lt;firstSpace]</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 拆分字符串为数组  </span></span><br><span class="line"><span class="type">Array</span>(name)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 获取前几位字符</span></span><br><span class="line"><span class="keyword">let</span> string = <span class="string">"Helloworld"</span></span><br><span class="line">string.<span class="built_in">dropLast</span>(string.<span class="built_in">count</span> - <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 获取后几位字符</span></span><br><span class="line"><span class="keyword">let</span> string = <span class="string">"Helloworld"</span></span><br><span class="line">string.<span class="built_in">dropFirst</span>(string.<span class="built_in">count</span> - <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 获取最后一位字符</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"Hellowaeorld"</span></span><br><span class="line">string.popLast()</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/Eureka使用/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1452,7 +1716,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
