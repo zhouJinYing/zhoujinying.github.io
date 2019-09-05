@@ -243,270 +243,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/文章/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/05/文章/" itemprop="url">文章</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T13:24:10+08:00">
-                2019-09-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/test/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/26/test/" itemprop="url">test</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-26T16:01:37+08:00">
-                2019-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="React-Code-View"><a href="#React-Code-View" class="headerlink" title="React Code View"></a>React Code View</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>让 Markdown 中的代码可以实时运行，为什么会有这样一个需求？</p>
-<p>很多前端团队技术相关的文档都采用 Markdown 编写， 文档中往往会伴随很多示例代码，我们希望大家在阅读文档的时候，可以运行示例代码，看到效果。</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
-<li>Markdown 中的代码可以运行，并预览效果</li>
-<li>代码可以在线编辑</li>
-<li>不影响整个文档流的布局</li>
-<li>支持 React, 支持代码高亮</li>
-</ul>
-<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><!--start-code-->
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> instance = &lt;Button&gt;Test&lt;/Button&gt;;</span><br><span class="line">ReactDOM.render(instance);</span><br></pre></td></tr></table></figure>
-<!--end-code-->
-<blockquote>
-<p>可以试着手动修改代码</p>
-</blockquote>
-<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CodeView <span class="keyword">from</span> <span class="string">'react-code-view'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'react-code-view/lib/less/index.less'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'rsuite'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;CodeView dependencies=&#123;&#123; Button &#125;&#125; &gt;</span><br><span class="line">  &#123;<span class="built_in">require</span>(<span class="string">'./example.md'</span>)&#125;</span><br><span class="line">&lt;<span class="regexp">/CodeView&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="theme-string"><a href="#theme-string" class="headerlink" title="theme string"></a><code>theme</code> <code>string</code></h3><p>设置主题，可选项： ‘light’, ‘dark’</p>
-<p>默认值：’light’</p>
-<h3 id="dependencies-Object"><a href="#dependencies-Object" class="headerlink" title="dependencies Object"></a><code>dependencies</code> <code>Object</code></h3><p>依赖的资源</p>
-<h3 id="showCode-boolean"><a href="#showCode-boolean" class="headerlink" title="showCode boolean"></a><code>showCode</code> <code>boolean</code></h3><p>显示代码</p>
-<p>默认值: true</p>
-<h3 id="babelTransformOptions-Object"><a href="#babelTransformOptions-Object" class="headerlink" title="babelTransformOptions Object"></a><code>babelTransformOptions</code> <code>Object</code></h3><p>babel 配置参数 <a href="https://babeljs.io/docs/usage/api/#options" target="_blank" rel="noopener">options</a></p>
-<p>默认值: { presets: [‘stage-0’, ‘react’, ‘es2015’] }</p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><ul>
-<li>Github: <a href="https://github.com/simonguo/react-code-view" target="_blank" rel="noopener">react-code-view</a></li>
-<li>Markdown 源文件: <a href="https://raw.githubusercontent.com/simonguo/react-code-view/master/docs/example.md" target="_blank" rel="noopener">example.md</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/String总结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1597,13 +1333,201 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/iOS项目国际化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhouJinYing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romantic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/iOS项目国际化/" itemprop="url">iOS项目国际化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T14:28:45+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文档针对以下问题进行了说明：</p>
+<ol>
+<li>系统方法解读</li>
+<li>如何进行国际化配置</li>
+<li>应用名称AppName国际化</li>
+<li>文本国际化</li>
+<li>图片国际化</li>
+<li>App内语言切换设计</li>
+<li>Xib/Storyboard国际化</li>
+<li>批量处理</li>
+<li>国际化调试、测试</li>
+</ol>
+<h2 id="系统方法解读"><a href="#系统方法解读" class="headerlink" title="系统方法解读"></a>系统方法解读</h2><p>NSLocalizedString(_ key: String, tableName: String? = default, bundle: Bundle = default, value: String = default, comment: String) -&gt; String</p>
+<p>key: 需要本地化的字符串对应的键值</p>
+<p>tableName: 指定在相应的lproj文件中的tableName.string文件中查找文字资源,如果传入<br>null，则在Localizable.strings中查找</p>
+<p>bundle: 语言文件所在的bundle</p>
+<p>value: 默认值,如果本地化资源文件中没有找到对应的 key 则返回这个值</p>
+<p>commit: 可传nil,是对key的注释</p>
+<h2 id="国际化配置"><a href="#国际化配置" class="headerlink" title="国际化配置"></a>国际化配置</h2><p>选中project-&gt;Info-&gt;Localizations，然后点击”+”，添加需要国际化/本地化的语言</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/添加国际化语言配置.png" alt=""></p>
+<h2 id="应用名称AppName国际化"><a href="#应用名称AppName国际化" class="headerlink" title="应用名称AppName国际化"></a>应用名称AppName国际化</h2><p>创建名称为InfoPlist的文件，选中InfoPlist.strings，在Xcode右侧点击Localize，选择需要本地化的语言</p>
+<p>在各语言InfoPlist.strings中设置AppName</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CFBundleDisplayName = &quot;Localizable App Name&quot;;</span><br></pre></td></tr></table></figure>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/项目名称国际化.png" alt=""></p>
+<p>AppName国际化即已完成</p>
+<h2 id="字符串文本国际化"><a href="#字符串文本国际化" class="headerlink" title="字符串文本国际化"></a>字符串文本国际化</h2><p>创建名称为Localizable的文件，选中Localizable.strings，在Xcode右侧点击Localize，选择需要本地化的语言</p>
+<p>在Localizable.strings下对应的文件中，分别以Key-Value的形式，为代码中每一个需要本地化的字符串赋值<br><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/项目名称国际化.png" alt=""></p>
+<p>字符串国际化即已完成</p>
+<h2 id="图片国际化"><a href="#图片国际化" class="headerlink" title="图片国际化"></a>图片国际化</h2><p>有两种方式，第一种方式和国际化字符串一样，在Localizable.string中添加不同语言下对应的图片，调用时根据LocalizedString获取相应的image名称，获取图片。</p>
+<p>第二种方式，是对图片进行Localize，大量的文章都说可以通过这种方式，经过多次尝试，始终获取不到此图片，还正在解决中…</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/image.png" alt=""></p>
+<h2 id="App内语言切换"><a href="#App内语言切换" class="headerlink" title="App内语言切换"></a>App内语言切换</h2><p>App内语言切换有两种实现方法：</p>
+<ol>
+<li><p>切换语言时发送通知，所有的UI控件监听通知，然后刷新UI，类似于新浪微博实现，对于已有项目进行处理时较复杂</p>
+</li>
+<li><p>切换语言时，刷新keyWindow的rootViewController，类似微信的做法</p>
+</li>
+</ol>
+<p>针对刷新rootViewController这种，有以下两种设计思路：</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/国际化方案.png" alt=""></p>
+<p>方案一与方案二的区别在于：方案二不能在xib中对文本直接赋值，只能通过代码，因为在xib赋值时无法指定bundle，导致应用内语言切换时xib不生效</p>
+<p>也因此有了方案一，利用runtime机制，自定义一个继承自NSBundle的子类,我们称它为CustomBundle,在运行时利用object_setClass将NSBundle替换为CustomBundle<br>在这个CustomBundle中重写上面的那个localizedStringForKey方法,然后在这个重写的方法里拦截系统的调用。这个LanguageBundle的作用如下:</p>
+<ol>
+<li><p>替换NSBundle,让原本是localizedStringForKey的调用者的NSBundle,换为了LanguageBundle</p>
+</li>
+<li><p>在调用到localizedStringForKey的时候,可以对其实现高度定制,同时又可以让其父类NSBundle依旧执行该方法,只需super调用即可通过把NSBundle.mainBundle()替换成当前语言的bundle的方式来支持xib。</p>
+</li>
+</ol>
+<p>可根据项目的实际情况，如果都使用代码来为控件赋值的时候，建议使用方案二。</p>
+<h2 id="Xib-Storyboard国际化"><a href="#Xib-Storyboard国际化" class="headerlink" title="Xib/Storyboard国际化"></a>Xib/Storyboard国际化</h2><p>选中xib/Storyboard文件，在Xcode右侧点击Localize，选择需要本地化的语言，在string文件中，给各语言环境下的控件进行赋值</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/xib国际化.png" alt=""></p>
+<p>关于xib、storyboard中，国际化的key是一次性生成的，如果存在增加新控件时，需要重新生成，针对这个问题，添加脚本</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/脚本.jpeg" alt=""></p>
+<p><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/LocalizingYourApp/LocalizingYourApp.html" target="_blank" rel="noopener">官方xib/storyboard文档</a></p>
+<p><a href="">脚本链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">python <span class="variable">$&#123;SRCROOT&#125;</span>/<span class="variable">$&#123;TARGET_NAME&#125;</span>/RunScript/AutoGenStrings.py <span class="variable">$&#123;SRCROOT&#125;</span>/<span class="variable">$&#123;TARGET_NAME&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="批量处理"><a href="#批量处理" class="headerlink" title="批量处理"></a>批量处理</h2><p>####项目中文批量生成到Localizable.strings<br>针对已有项目，如果逐个文件进行替换无非要花费大量的时间，运用以下方法可进行批量替换</p>
+<ol>
+<li><p>Command+Shift+F，进入全局搜索引擎，切换为Replace模式，并把匹配模式改为Regular Expression</p>
+</li>
+<li><p>在搜索条件里输入(@”[“]<em>[\u4E00-\u9FA5]+[“\n]</em>?”)，在下面替换内容里输入NSLocalizedString($1, nil)</p>
+</li>
+<li><p>点击Replace All，即可完成替换。</p>
+</li>
+<li><p>cd 工程目录<br>mkdir en.lproj<br>mkdir zh-Hans.lproj<br>find . -name <em>.m | xargs genstrings -o en.lproj<br>find . -name </em>.m | xargs genstrings -o zh-Hans.lproj<br>此时，en.lproj和zh-Hans.lproj文件夹中就有了相应的Localizable.string文件</p>
+</li>
+</ol>
+<h2 id="国际化调试"><a href="#国际化调试" class="headerlink" title="国际化调试"></a>国际化调试</h2><p>在国际化测试时，可以通过在Edit Scheme中选择特定语言。</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/test.jpeg" alt=""></p>
+<p><a href="https://gitlab.com/1995zhouJinYing/internation" target="_blank" rel="noopener">Demo地址</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.tomorjm.com/year/11/25/iOS%E5%BA%94%E7%94%A8%E5%86%85%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%E7%9A%84%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/" target="_blank" rel="noopener">iOS应用内多语言切换的奇思妙想</a></p>
+<p><a href="https://www.jianshu.com/p/88c1b65e3ddb" target="_blank" rel="noopener">3分钟实现iOS语言本地化/国际化</a></p>
+<p><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/TestingYourInternationalApp/TestingYourInternationalApp.html#//apple_ref/doc/uid/10000171i-CH7-SW1" target="_blank" rel="noopener">国际化和本地化指南-苹果官方文档</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1647,7 +1571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
