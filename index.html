@@ -1,1925 +1,689 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="">
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
+  <title>Hexo</title>
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Romantic">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Romantic">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Romantic">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/">
-
-
-
-
-
-  <title>Romantic</title>
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/index.html">
   
-
-
-
-
-
-
-
-
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/love.js"></script>
+    <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
 
-  
-  
-    
-  
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
 
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-    <a href="https://github.com/zhouJinYing" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Romantic</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
-  
-    <ul id="menu" class="menu">
-      
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/.">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            <i class="icon icon-home-fill"></i>
             
-            Home
+            <span class="menu-title">Home</span>
           </a>
         </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            Categories
-          </a>
-        </li>
-      
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            <i class="icon icon-archives-fill"></i>
             
-            Archives
+            <span class="menu-title">Archives</span>
           </a>
         </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/iOS13新特性/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/05/iOS13新特性/" itemprop="url">iOS13</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T13:55:46+08:00">
-                2019-09-05
-              </time>
+            <i class="icon icon-folder"></i>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://note.youdao.com/yws/res/9196/WEBRESOURCE0ab2ca14c17ca59c7d1ec0a66282367a" alt="ios13.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/BitCode脚本检测/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/05/BitCode脚本检测/" itemprop="url">BitCode脚本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T13:41:18+08:00">
-                2019-09-05
-              </time>
+            <i class="icon icon-tags"></i>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在包体积优化中，需要统计不支持BitCode pod库有哪些，在pod库数量较多的情况下，使用脚本节省统计时间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用检查的命令</span><br><span class="line">otool -l QiBitcode/QiBitcode.framework/QiBitcode | grep __LLVM</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">import glob, os</span><br><span class="line">import subprocess</span><br><span class="line">import commands</span><br><span class="line"># os.chdir(&quot;/Users/jinying.zhou.o/Desktop/BaoTiJi&quot;)</span><br><span class="line"></span><br><span class="line">fileList = []          ## 存放.a文件的数组</span><br><span class="line">architectures = [&apos;armv7&apos;,&apos;arm64&apos;,&apos;i386&apos;,&apos;x86_64&apos;]</span><br><span class="line"># architectures = [&apos;armv7&apos;,&apos;arm64&apos;]</span><br><span class="line">unsupports = []</span><br><span class="line">rootPath = &apos;/Users/jinying.zhou.o/Desktop/testbitcode&apos;</span><br><span class="line"></span><br><span class="line">def checkBitCode(thinStr,unzipStr):  </span><br><span class="line">	os.system(thinStr)</span><br><span class="line"></span><br><span class="line">	# 执行解压操作</span><br><span class="line">	os.chdir(rootPath)</span><br><span class="line">	# 新建文件夹</span><br><span class="line">	folder = endingFile </span><br><span class="line">    #获取此py文件路径，在此路径选创建在new_folder文件夹中的test文件夹 </span><br><span class="line">	if not os.path.exists(folder):</span><br><span class="line">		os.makedirs(folder)</span><br><span class="line">	os.chdir(folder)</span><br><span class="line">	os.system(unzipStr)</span><br><span class="line">	# 在当前文件夹下遍历解压获得的.o</span><br><span class="line">	# for tempFile in glob.glob(&quot;*.txt&quot;):</span><br><span class="line"></span><br><span class="line">	for tempFile in os.listdir(folder):</span><br><span class="line">		if tempFile.endswith(&quot;.o&quot;):</span><br><span class="line">			checkStr = &apos;otool -l &apos; + tempFile + &apos; | grep bitcode&apos;</span><br><span class="line">			output = commands.getstatusoutput(checkStr)  </span><br><span class="line">			keyword = &apos;bitcode&apos;</span><br><span class="line">			# print output</span><br><span class="line">			if keyword not in output[1]:</span><br><span class="line">				if folder not in unsupports: </span><br><span class="line">					print checkStr</span><br><span class="line">					unsupports.append(folder)</span><br><span class="line">					break</span><br><span class="line"></span><br><span class="line">for root, dirs, files in os.walk(rootPath):</span><br><span class="line">    for file in files:</span><br><span class="line">        if file.endswith(&quot;.a&quot;):</span><br><span class="line">              fileList.append(os.path.join(root, file))</span><br><span class="line"></span><br><span class="line">for file in fileList:</span><br><span class="line">	print fileList</span><br><span class="line">	endingFile = file.rstrip(&apos;.a&apos;)</span><br><span class="line">	# 获取架构路径</span><br><span class="line">	for architecture in architectures:</span><br><span class="line">		thinStr = &apos;lipo -thin &apos; + architecture + &apos; &apos;  + file + &apos; -output &apos; + endingFile + &apos;-&apos; + architecture + &apos;.a&apos;</span><br><span class="line">		unzipStr = &apos;ar -x &apos; + endingFile + &apos;-&apos; + architecture + &apos;.a&apos;</span><br><span class="line">		checkBitCode(thinStr,unzipStr)</span><br><span class="line">		# print(unzipStr)</span><br><span class="line"></span><br><span class="line">print(&apos;====================&apos;) 		</span><br><span class="line">print(unsupports)</span><br></pre></td></tr></table></figure>
-<p>通过此脚本排查出不支持BitCode的.a  及 Framework，不过还是要以项目中实际Build的为准</p>
-<p>参考链接：</p>
-<p><a href="https://juejin.im/post/5c08eb8bf265da616c65680b" target="_blank" rel="noopener">iOS 了解Xcode Bitcode</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/iOS包体积优化/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/05/iOS包体积优化/" itemprop="url">iOS包体积优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T13:28:31+08:00">
-                2019-09-05
-              </time>
+            <i class="icon icon-project"></i>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="App包体积优化调研"><a href="#App包体积优化调研" class="headerlink" title="App包体积优化调研"></a>App包体积优化调研</h3><h4 id="1-背景"><a href="#1-背景" class="headerlink" title="1.背景"></a>1.背景</h4><p>随着业务的增加，工程中引入越来越多的业务代码和第三方库， 安装包体积越来越大。</p>
-<p>App 的包大小做优化的目的一方面为用户手机节省更多的空间，同时也节省用户流量，提高用户的下载速度。 </p>
-<p>App包体积过大，对用户更新升级率也会有很大影响。</p>
-<p>App Store 官方规定 App 安装包如果超过 200MB，只可以在 WiFi 环境下载（iOS13已取消限制），以避免用户超出运营商套餐流量。</p>
-<h4 id="2-App包比重分析"><a href="#2-App包比重分析" class="headerlink" title="2.App包比重分析"></a>2.App包比重分析</h4><h5 id="2-1-ipa安装包构成"><a href="#2-1-ipa安装包构成" class="headerlink" title="2.1 ipa安装包构成"></a>2.1 ipa安装包构成</h5><p>.ipa（iOS App Store Package）：是一个压缩包，iOS 应用程序归档文件，即提交到 App Store Connect 的文件。</p>
-<p>.app（Application） ：是应用的具体描述，即安装到 iOS 设备上的文件。<br>当我们拿到 Archive 后的 .ipa，使用 “归档实用工具” 打开后，Payload 目录下放的就是 .app 文件。</p>
-<p>至于包体积，评判的标准，应以 App Store 上看到的为准。</p>
-<h5 id="2-3-结果分析"><a href="#2-3-结果分析" class="headerlink" title="2.3 结果分析"></a>2.3 结果分析</h5><p>图片资源占138M</p>
-<p>FrameWorks165.166M</p>
-<p>Unix可执行文件120.5M</p>
-<p>这三部分占比较重，因此对以下三部分着重进行了以下分析。</p>
-<h6 id="2-3-1-FrameWorks"><a href="#2-3-1-FrameWorks" class="headerlink" title="2.3.1 FrameWorks"></a>2.3.1 FrameWorks</h6><p>FrameWorks由framework项目中引入依赖库、dylib（系统库）两部分组成。</p>
-<h6 id="2-3-2-图片资源"><a href="#2-3-2-图片资源" class="headerlink" title="2.3.2 图片资源"></a>2.3.2 图片资源</h6><p>在.app第一层级目录下存在大量的图片资源，其中有几张单张大小达到500KB左右</p>
-<p>经过排查，定位发现有些图片来自于pod库，pod库在编写podspec的时候，用了以下的语句指定资源文件，导致打包的时候png被直接拷贝到安装包中。</p>
-<p>Assets.car文件是由Assets.xcassets生成的压缩文件。</p>
-<p>通过工具解压后分析文件夹中图片，发现存在体积较大图片，及重复图片。</p>
-<h6 id="2-3-3-可执行文件"><a href="#2-3-3-可执行文件" class="headerlink" title="2.3.3 可执行文件"></a>2.3.3 可执行文件</h6><p>LinkMap文件是Xcode产生可执行文件的同时生成的链接信息，用来描述可执行文件的构造成分。</p>
-<p>通过设置Project-&gt;Build Settings-&gt;Write Link Map File为YES， File，build完后就可以在相应的路径看到LinkMap文件，通过<a href="https://github.com/huanxsd/LinkMap" target="_blank" rel="noopener">LinkMap分析工具</a>进行分析，得出项目中占用可执行文件较大的模块。（此处列举了300K以上部分）</p>
-<h4 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h4><p><img src="http://note.youdao.com/yws/res/8878/F4E795455468481A8311898A69B0A5B5" alt="image"></p>
-<h5 id="3-1-资源瘦身"><a href="#3-1-资源瘦身" class="headerlink" title="3.1 资源瘦身"></a>3.1 资源瘦身</h5><h6 id="3-1-1-删除无用图片资源、重复图片资源"><a href="#3-1-1-删除无用图片资源、重复图片资源" class="headerlink" title="3.1.1 删除无用图片资源、重复图片资源"></a>3.1.1 删除无用图片资源、重复图片资源</h6><ol>
-<li><p>排查未使用图片资源</p>
-<p> 通过<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources</a>对项目中图片资源进行快速排查</p>
-<p> <img src="http://note.youdao.com/yws/res/8209/WEBRESOURCE52c45c3f98b7621a07ded703d3c08936" alt="无用资源排查.png"></p>
-<p> 注意：这个app的原理是，对某一文件目录下所有的源代码文件进行扫描，用正则表达式匹配出所有的@”xxx”字符串（会根据不同类型的源代码文件使用不同的匹配规则），形成“使用到的图片的集合”，然后扫描所有的图片文件名，查看哪些图片文件名不在“使用到的图片的集合”中，然后将这些图片文件呈现在结果中。</p>
-<p> 所以可能会有误伤，需要开发人员对未使用资源进行再次确认方可手动删除。</p>
-</li>
-<li><p>大图片处理</p>
-<p> 针对图片体积较大的问题，可由设计提供体积较小的切图，或者使用工具压缩后再放置项目中。</p>
-<p> 以下为较常用压缩工具：</p>
-<p> <a href="https://imageoptim.com/howto.html" target="_blank" rel="noopener">ImageOptim工具</a></p>
-<p> <a href="https://tinypng.com/" target="_blank" rel="noopener">TinyPng</a></p>
-<p> <img src="http://note.youdao.com/yws/res/8853/6E20F9EBB69D4612A8B85E0B916E7661" alt="image"></p>
-<p> 同时建议将主工程中散落的图片资源，比如DoAsset文件夹下图片资源，使用Apple推荐的.xcassets来管理，它会把里边的所有png格式的图片压缩成一个Assets.car文件，压缩比率比其他方式管理图片要高。</p>
-</li>
-<li><p>将图片放置到云端 On-Demand Resources</p>
-<p> 苹果从iOS 9开始引入了<a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/index.html#//apple_ref/doc/uid/TP40015083" target="_blank" rel="noopener">On Demand Resource</a>功能，即将部分图片可以被放置在苹果的服务器上，不随着app的下载而下载，系统会根据App运行情况，动态下载并加载所需资源，而在存在存储空间不足时，自动删除这类资源。也是一个优化安装包大小的方法。</p>
-<p> 不过On-Demand Resources一般在游戏关卡中使用较多，而且受到网络的影响需要下载并加载所需资源，在图片资源体量不太大的情况下，不太建议使用。</p>
-</li>
-<li><p>图片资源重复利用</p>
-<p>在基础组件库中，已存放了部分统一的的图标资源，可以在基础库中对使用率较高的图标进行统一存放。在减少App体积的同时，也方便后期对图标的更新与维护。</p>
-</li>
-<li><p>图片管理方式</p>
-<p>在调研中发现，目前项目中各个模块管理图片资源的方式不尽相同</p>
-<p>主工程有以下两种方式：</p>
-<ul>
-<li>png图片直接放在主工程目录下 </li>
-<li>xcassets管理 </li>
-</ul>
-<p>pod库有以下两种方式：</p>
-<ul>
-<li>图片放置bundle中，通过bundle访问图片资源</li>
-<li><p>xcassets管理</p>
-<p>从App瘦身的角度而言，xcassets 里的 2x 和 3x，会根据具体设备分发，不会同时包含。而 Bundle 会都包含。因此应尽量通过Asset Catalog来管理图片。</p>
-<p>另外在<a href="https://guides.cocoapods.org/syntax/podspec.html#resource_bundles" target="_blank" rel="noopener">Cocoapods的官方文档</a>中提到了两点： </p>
-</li>
-<li><p>使用resource_bundles能大大减小命名冲突的概率</p>
-</li>
-<li><p>使用resources资源文件是直接拷贝到app中的，没有经过Xcode的优化</p>
-<p><img src="http://note.youdao.com/yws/res/8856/820932628CC74535BFE71DA510431273" alt="image"></p>
-<p><img src="http://note.youdao.com/yws/res/8858/E578E8A5E4A64D209A780382213F1AC1" alt="image"></p>
-</li>
-</ul>
-</li>
-</ol>
-<h5 id="3-2-可执行文件优化"><a href="#3-2-可执行文件优化" class="headerlink" title="3.2 可执行文件优化"></a>3.2 可执行文件优化</h5><h6 id="3-2-1-排查未使用类及方法"><a href="#3-2-1-排查未使用类及方法" class="headerlink" title="3.2.1. 排查未使用类及方法"></a>3.2.1. 排查未使用类及方法</h6><p>项目中Dead Code Stripping此选项为Yes, C/C++/Swift 等静态语言编译器会在 link 的时候移除未使用的代码，但是对于OC等动态语言是无效的。</p>
-<p>因此只需监测OC无效代码即可（在项目启动优化时已进行排查）</p>
-<h6 id="3-2-2-去除功能重复三方库"><a href="#3-2-2-去除功能重复三方库" class="headerlink" title="3.2.2 去除功能重复三方库"></a>3.2.2 去除功能重复三方库</h6><p>对项目中功能类似的三方库进行排查，是否可进行精简（项目启动优化已进行）。</p>
-<h5 id="3-3-编译选项优化"><a href="#3-3-编译选项优化" class="headerlink" title="3.3 编译选项优化"></a>3.3 编译选项优化</h5><p>iOS 9之后<a href="https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f" target="_blank" rel="noopener">苹果官方</a>提供了App Thinning：Slicing、Bitcode，On Demand Resouces；</p>
-<h6 id="3-3-1-BitCode"><a href="#3-3-1-BitCode" class="headerlink" title="3.3.1 BitCode"></a>3.3.1 BitCode</h6><ol>
-<li><p>什么是BitCode</p>
-<p> Bitcode官方文档解释 是Xcode编译打包程序的一种中间码，在包含Bitcode配置的程序被上传到App Store之后，App Store也可以对其进行编译和链接。同时，Bitcode允许苹果后期重新优化程序的二进制执行文件。苹果会根据下载应用的用户手机指令集类型生成该指令集的二进制文件，进行下发下载 ,如下</p>
-<p> <img src="http://note.youdao.com/yws/res/8860/2A68962F65BC4598A90860675F1CE063" alt="image"></p>
-<p> 而在 BitCode 之前没我们都是把所有需要的 CPU 架构集合打包成一个 Fat Binary，结果就是用户最终下载的安装包之中有很多冗余的CPU 架构支持代码。</p>
-</li>
-</ol>
-<ol start="2">
-<li><p>如何设置</p>
-<p> 在Build Settings下，将Enable Bitcode设置为Yes来完成。（项目中所有的库都必须支持bitcode）</p>
-</li>
-<li><p>需要注意的问题</p>
-<p> 工程开启BitCode要求我们依赖的静态库和动态库都是含有 BitCode 的，不然就会打包失败。集成的其他第三方库也需要支持Bitcode（项目目前不支持/(ㄒoㄒ)/~~）。</p>
-<p> 开启 BitCode 之后，由于最终的可执行文件是 Apple 自动生成的，同时产生新的符号表文件，所以我们使用原本打包生成的 dSYM 符号化文件是无法完成符号化的。</p>
-<p> 所以我们需要在上传至 App Store 时需要勾选 Include app symbols for your application to receive symboilcated crash logs from Apple：勾选之后 Apple 会给我们生成 dSYM，然后在 Xcode -&gt; Organizer 或者 iTunes Connect 中下载对应的 dSYM 来进行符号化。</p>
-</li>
-</ol>
-<h6 id="3-3-2-编译选项配置"><a href="#3-3-2-编译选项配置" class="headerlink" title="3.3.2 编译选项配置"></a>3.3.2 编译选项配置</h6><p><a href="https://help.apple.com/xcode/mac/current/#/itcaec37c2a6" target="_blank" rel="noopener">BuildSetting配置苹果官方</a></p>
-<p>在App体积优化上，可配置的选项：</p>
-<table>
-<thead>
-<tr>
-<th>编译选项</th>
-<th>当前状态</th>
-<th>用途</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Optimization Level</td>
-<td>Fastest,Smallest</td>
-<td>编译器执行所有优化，不会增加代码的长度，执行文件占用更少内存</td>
-<td>已配置</td>
-</tr>
-<tr>
-<td>Strip Linked Product</td>
-<td>YES</td>
-<td>去除符号信息</td>
-<td>已配置</td>
-</tr>
-<tr>
-<td>Dead Code Stripping</td>
-<td>YES</td>
-<td>C/C++/Swift 等静态语言编译器会在 link 的时候移除未使用的代码</td>
-<td>已配置</td>
-</tr>
-<tr>
-<td>Deployment PostProcessing</td>
-<td>NO</td>
-<td>Deployment的总开关</td>
-<td>可配置为Yes</td>
-</tr>
-<tr>
-<td>Symbols hidden by default</td>
-<td>YES</td>
-<td>去除符号信息</td>
-<td>已配置</td>
-</tr>
-<tr>
-<td>Compress PNG Files</td>
-<td>YES</td>
-<td>打包的时候对图片进行无损压缩</td>
-<td>已配置</td>
-</tr>
-<tr>
-<td>Remove Text Medadata From PNG Files</td>
-<td>YES</td>
-<td>移除 PNG 资源的文本字符，比如图像名称、创作时间、注释等信息</td>
-<td>已配置</td>
-</tr>
-</tbody>
-</table>
-<p>Deployment Postprocessing 是Deployment的总开关，所以在打开这个选项之前 Strip Linked Product是不起作用的。</p>
-<p>打开Deployment Postprocessing对包体积进行了对比，效果还是较明显的：</p>
-<table>
-<thead>
-<tr>
-<th>Deployment Postprocessing</th>
-<th>ipa大小（MB）</th>
-<th>.app大小(MB)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>开启前</td>
-<td>249.6</td>
-<td>443.5</td>
-</tr>
-<tr>
-<td>开启后</td>
-<td>243.3</td>
-<td>405.2</td>
-</tr>
-</tbody>
-</table>
-<h4 id="4-监控机制"><a href="#4-监控机制" class="headerlink" title="4 监控机制"></a>4 监控机制</h4><h5 id="4-1-监控"><a href="#4-1-监控" class="headerlink" title="4.1 监控"></a>4.1 监控</h5><p>在对包体积做减法的同时，也要严控新版本功能迭代体积的增加。因此，建立预警机制，也显得尤为重要。</p>
-<p>在做调研的过程中，发现<a href="https://techblog.toutiao.com/2018/06/04/gan-huo-jin-ri-tou-tiao-iosduan-an-zhuang-bao-da-xiao-you-hua-si-lu-yu-shi-jian/" target="_blank" rel="noopener">今日头条的包体积监控机制</a>提供了一个很好的思路：</p>
-<p><img src="http://note.youdao.com/yws/res/8867/EC283D699E9340769A016570A1FD459B" alt="image"><br><img src="http://note.youdao.com/yws/res/8869/6F0609247D2046E8BE65F7F1F213C3E4" alt="image"></p>
-<h5 id="4-2-流程规范"><a href="#4-2-流程规范" class="headerlink" title="4.2 流程规范"></a>4.2 流程规范</h5><p>监控机制只是为了发现问题，更重要的是我们在开发的过程中，养成良好的开发习惯，避免造成这些问题。</p>
-<ul>
-<li>在实现新功能时，首先考虑通用组件是否已提供此功能的实现，可否复用</li>
-<li>在引入新的三方库时要慎重，是否会造成包体积的显著增加，考虑是否可以抽离，而不是引入该库</li>
-<li>对于新增加的图标等资源文件，要检查一下大小，若体积太大，压缩处理后再进行使用</li>
-<li>废弃模块及早清理；</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/String总结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/18/String总结/" itemprop="url">String总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <li class="menu-item menu-item-books">
+          <a href="/books">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-18T16:57:21+08:00">
-                2019-03-18
-              </time>
+            <i class="icon icon-book-fill"></i>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 获取String字符串长度</span></span><br><span class="line">str.<span class="built_in">count</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// 截取第一个关键字之前的内容</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"Marie Curie"</span></span><br><span class="line"><span class="keyword">let</span> firstSpace = name.firstIndex(of: <span class="string">" "</span>) ?? name.endIndex</span><br><span class="line"><span class="keyword">let</span> firstName = name[..&lt;firstSpace]</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 拆分字符串为数组  </span></span><br><span class="line"><span class="type">Array</span>(name)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 获取前几位字符</span></span><br><span class="line"><span class="keyword">let</span> string = <span class="string">"Helloworld"</span></span><br><span class="line">string.<span class="built_in">dropLast</span>(string.<span class="built_in">count</span> - <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 获取后几位字符</span></span><br><span class="line"><span class="keyword">let</span> string = <span class="string">"Helloworld"</span></span><br><span class="line">string.<span class="built_in">dropFirst</span>(string.<span class="built_in">count</span> - <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 获取最后一位字符</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"Hellowaeorld"</span></span><br><span class="line">string.popLast()</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/Eureka使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/04/Eureka使用/" itemprop="url">Eureka使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <li class="menu-item menu-item-links">
+          <a href="/links">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T11:06:00+08:00">
-                2019-03-04
-              </time>
+            <i class="icon icon-friendship"></i>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>插入行</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>? titleRow?.section!.insert(row: row, after: titleRow!)</span><br></pre></td></tr></table></figure>
-<p>隐藏 \ 显示行</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taxRow?.hidden = <span class="literal">false</span></span><br><span class="line">taxRow?.evaluateHidden()</span><br></pre></td></tr></table></figure>
-<p>当前行置顶</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> selectRow = formController?.tableView.indexPath(<span class="keyword">for</span>: row.cell) &#123;</span><br><span class="line">   formController?.tableView.scrollToRow(at: selectRow, at: .top, animated: <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>删除行</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rows.replaceSubrange(range!, with: [])</span><br><span class="line">fresh()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/iOS绘制pdf/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/04/iOS绘制pdf/" itemprop="url">iOS绘制pdf</a></h1>
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
         
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T10:30:31+08:00">
-                2019-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      </ul>
       
-      
-
-      
-        
-          
-            <p>在iOS中预览pdf文件，显示pdf的三种方式</p>
-<p>1.WebView直接显示pdf文件</p>
-<p>2.自定义UIView，运用CGPDFDocumentRef读取pdf文件内容，进行drawRect</p>
-<p>3.使用Apple的文件预览控件：QLPreveiewController</p>
-<h2 id="自定义UIView的实现方式"><a href="#自定义UIView的实现方式" class="headerlink" title="自定义UIView的实现方式"></a>自定义UIView的实现方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;RiderPDFView.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation RiderPDFView</span><br><span class="line"></span><br><span class="line">- (void)drawRect:(CGRect)rect</span><br><span class="line">&#123;</span><br><span class="line">    NSString *pathStr = [[NSBundle mainBundle] pathForResource:@&quot;my&quot; ofType:@&quot;.pdf&quot;];</span><br><span class="line">    CGPDFDocumentRef pdfRef = [self pdfRefByFilePath:pathStr];</span><br><span class="line"></span><br><span class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</span><br><span class="line">    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfRef, 1);//获取指定页的内容如catPage=1，获取的是pdf第一页的内容</span><br><span class="line">    CGRect mediaRect = CGPDFPageGetBoxRect(pageRef, kCGPDFCropBox);//pdf内容的rect</span><br><span class="line"></span><br><span class="line">    CGContextRetain(context);</span><br><span class="line">    CGContextSaveGState(context);</span><br><span class="line"></span><br><span class="line">    [[UIColor whiteColor] set];</span><br><span class="line">    CGContextFillRect(context, rect);//填充背景色，否则为全黑色；</span><br><span class="line"></span><br><span class="line">    CGContextTranslateCTM(context, 0, rect.size.height);//设置位移，x，y；</span><br><span class="line"></span><br><span class="line">    CGFloat under_bar_height = 0.0f;</span><br><span class="line">    CGContextScaleCTM(context, rect.size.width / mediaRect.size.width, -(rect.size.height + under_bar_height) / mediaRect.size.height);//缩放倍数--x轴和y轴</span><br><span class="line"></span><br><span class="line">    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);</span><br><span class="line">    CGContextSetRenderingIntent(context, kCGRenderingIntentDefault);</span><br><span class="line">    CGContextDrawPDFPage(context, pageRef);//绘制pdf</span><br><span class="line"></span><br><span class="line">    CGContextRestoreGState(context);</span><br><span class="line">    CGContextRelease(context);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (CGPDFDocumentRef)pdfRefByFilePath:(NSString *)aFilePath</span><br><span class="line">&#123;</span><br><span class="line">    CFStringRef path;</span><br><span class="line">    CFURLRef url;</span><br><span class="line">    CGPDFDocumentRef document;</span><br><span class="line"></span><br><span class="line">    path = CFStringCreateWithCString(NULL, [aFilePath UTF8String], kCFStringEncodingUTF8);</span><br><span class="line">    url = CFURLCreateWithFileSystemPath(NULL, path, kCFURLPOSIXPathStyle, NO);</span><br><span class="line">    document = CGPDFDocumentCreateWithURL(url);</span><br><span class="line"></span><br><span class="line">    CFRelease(path);</span><br><span class="line">    CFRelease(url);</span><br><span class="line"></span><br><span class="line">    return document;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RiderPDFView *view = [[RiderPDFView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 300)];</span><br><span class="line">[self.view addSubview:view];</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://my.oschina.net/u/1450995/blog/704563" target="_blank" rel="noopener">iOS–PDF</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/NSTimer/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/14/NSTimer/" itemprop="url">NSTimer</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T12:38:18+08:00">
-                2019-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/设置终端代理/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/14/设置终端代理/" itemprop="url">设置终端代理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T12:34:13+08:00">
-                2019-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="分辨需要设置的代理"><a href="#分辨需要设置的代理" class="headerlink" title="分辨需要设置的代理"></a>分辨需要设置的代理</h2><ul>
-<li>HTTP 形式：<blockquote>
-<p>git clone <a href="https://github.com/owner/git.git" target="_blank" rel="noopener">https://github.com/owner/git.git</a></p>
-</blockquote>
-</li>
-<li>SSH 形式：<blockquote>
-<p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:owner/git.git</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="一、HTTP-形式"><a href="#一、HTTP-形式" class="headerlink" title="一、HTTP 形式"></a>一、HTTP 形式</h2><h3 id="走-HTTP-代理"><a href="#走-HTTP-代理" class="headerlink" title="走 HTTP 代理"></a>走 HTTP 代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy <span class="string">"http://127.0.0.1:8080"</span></span><br><span class="line">git config --global https.proxy <span class="string">"http://127.0.0.1:8080"</span></span><br></pre></td></tr></table></figure>
-<h3 id="走-socks5-代理（如-Shadowsocks）"><a href="#走-socks5-代理（如-Shadowsocks）" class="headerlink" title="走 socks5 代理（如 Shadowsocks）"></a>走 socks5 代理（如 Shadowsocks）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy <span class="string">"socks5://127.0.0.1:1080"</span></span><br><span class="line">git config --global https.proxy <span class="string">"socks5://127.0.0.1:1080"</span></span><br></pre></td></tr></table></figure>
-<h3 id="取消设置"><a href="#取消设置" class="headerlink" title="取消设置"></a>取消设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
-<h2 id="二、SSH-形式"><a href="#二、SSH-形式" class="headerlink" title="二、SSH 形式"></a>二、SSH 形式</h2><p>修改 <code>~/.ssh/config</code> 文件（不存在则新建）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 必须是 github.com</span><br><span class="line">Host github.com</span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   # 走 HTTP 代理</span><br><span class="line">   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=8080</span><br><span class="line">   # 走 socks5 代理（如 Shadowsocks）</span><br><span class="line">   # ProxyCommand nc -v -x 127.0.0.1:1080 %h %p</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/iOS内存泄漏检测/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/29/iOS内存泄漏检测/" itemprop="url">iOS内存泄漏检测</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-29T13:40:49+08:00">
-                2018-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/WKWebView数据共享/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZhouJinYing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romantic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/29/WKWebView数据共享/" itemprop="url">WKWebView数据共享</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-29T13:22:43+08:00">
-                2018-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题说明：在使用WKWebview时遇到一个问题，在h5页面A中存储的数据，在h5页面B中拿不到这个存储的数据。</p>
-<p>原因：WKWebView Cookie 问题在于 WKWebView 发起的请求不会自动带上存储于 NSHTTPCookieStorage 容器中的 Cookie。</p>
-<p>解决方案：<br>通过让所有WKWebView 共享同一个 WKProcessPool 实例，可以实现多个 WKWebView 之间共享 Cookie（session Cookie and persistent Cookie）数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//定义一个processPool单例 </span><br><span class="line">+(WKProcessPool*)sharedProcessPool&#123;</span><br><span class="line"></span><br><span class="line">    static WKProcessPool *processPool = nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        if (!processPool) &#123;</span><br><span class="line">            processPool = [[WKProcessPool alloc] init];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return processPool;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 配置</span><br><span class="line">    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];</span><br><span class="line">    config.processPool = [WebViewController sharedProcessPool];</span><br><span class="line">    webView = [[WKWebView alloc] initWithFrame:() configuration:config];</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">ZhouJinYing</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">zhouwen</span>
-
-  
-</div>
- 
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
-
-<span id="busuanzi_container_site_uv">
-  本站总访问量<span id="busuanzi_value_site_uv"></span>次
-</span>
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
 	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
 
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+    </nav>
+  </div>
+</header>
 
   
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
 
 
-
-
-
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/iOS13新特性/" class="title">iOS13</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:55:46.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/BitCode脚本检测/" class="title">BitCode脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:41:18.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/iOS包体积优化/" class="title">iOS包体积优化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:28:31.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/18/String总结/" class="title">String总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-18T08:57:21.000Z" itemprop="datePublished">2019-03-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/04/Eureka使用/" class="title">Eureka使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-04T03:06:00.000Z" itemprop="datePublished">2019-03-04</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
   
 
-  
+    
+  </div>
+</aside>
 
   
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/iOS13新特性/">iOS13</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/09/05/iOS13新特性/" class="article-date">
+	  <time datetime="2019-09-05T05:55:46.000Z" itemprop="datePublished">Sep 5</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/05/iOS13新特性/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/BitCode脚本检测/">BitCode脚本</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/09/05/BitCode脚本检测/" class="article-date">
+	  <time datetime="2019-09-05T05:41:18.000Z" itemprop="datePublished">Sep 5</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/05/BitCode脚本检测/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/iOS包体积优化/">iOS包体积优化</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/09/05/iOS包体积优化/" class="article-date">
+	  <time datetime="2019-09-05T05:28:31.000Z" itemprop="datePublished">Sep 5</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/05/iOS包体积优化/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/18/String总结/">String总结</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/03/18/String总结/" class="article-date">
+	  <time datetime="2019-03-18T08:57:21.000Z" itemprop="datePublished">Mar 18</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/18/String总结/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/04/Eureka使用/">Eureka使用</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/03/04/Eureka使用/" class="article-date">
+	  <time datetime="2019-03-04T03:06:00.000Z" itemprop="datePublished">Mar 4</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/04/Eureka使用/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/04/iOS绘制pdf/">iOS绘制pdf</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/03/04/iOS绘制pdf/" class="article-date">
+	  <time datetime="2019-03-04T02:30:31.000Z" itemprop="datePublished">Mar 4</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/04/iOS绘制pdf/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/NSTimer/">NSTimer</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/01/14/NSTimer/" class="article-date">
+	  <time datetime="2019-01-14T04:38:18.000Z" itemprop="datePublished">Jan 14</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/14/NSTimer/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/设置终端代理/">设置终端代理</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/01/14/设置终端代理/" class="article-date">
+	  <time datetime="2019-01-14T04:34:13.000Z" itemprop="datePublished">Jan 14</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/14/设置终端代理/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/29/iOS内存泄漏检测/">iOS内存泄漏检测</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/12/29/iOS内存泄漏检测/" class="article-date">
+	  <time datetime="2018-12-29T05:40:49.000Z" itemprop="datePublished">Dec 29</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/29/iOS内存泄漏检测/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/29/WKWebView数据共享/">WKWebView数据共享</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/12/29/WKWebView数据共享/" class="article-date">
+	  <time datetime="2018-12-29T05:22:43.000Z" itemprop="datePublished">Dec 29</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/29/WKWebView数据共享/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
 
   
-  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom="">
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev disabled">
+                <a href="javascript:;">
+                    <i class="icon icon-angle-left"></i>
+                    Prev
+                </a>
+            </li>
+            
+            
+            <li class="next">
+                <a href="/page/2/">
+                    Next
+                    <i class="icon icon-angle-right"></i>
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 1 of 2</div>
+        </div>
+    </nav>
+    
+ 
+</main>
 
-  
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
 
-  
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
 
-  
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
 
 </body>
 </html>
