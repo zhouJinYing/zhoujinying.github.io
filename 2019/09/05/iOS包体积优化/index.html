@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>iOS包体积优化 | Hexo</title>
+  <meta name="description" content="App包体积优化调研1.背景随着业务的增加，工程中引入越来越多的业务代码和第三方库， 安装包体积越来越大。 App 的包大小做优化的目的一方面为用户手机节省更多的空间，同时也节省用户流量，提高用户的下载速度。  App包体积过大，对用户更新升级率也会有很大影响。 App Store 官方规定 App 安装包如果超过 200MB，只可以在 WiFi 环境下载（iOS13已取消限制），以避免用户超出运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS包体积优化">
+<meta property="og:url" content="http://yoursite.com/2019/09/05/iOS包体积优化/index.html">
+<meta property="og:site_name" content="Romantic">
+<meta property="og:description" content="App包体积优化调研1.背景随着业务的增加，工程中引入越来越多的业务代码和第三方库， 安装包体积越来越大。 App 的包大小做优化的目的一方面为用户手机节省更多的空间，同时也节省用户流量，提高用户的下载速度。  App包体积过大，对用户更新升级率也会有很大影响。 App Store 官方规定 App 安装包如果超过 200MB，只可以在 WiFi 环境下载（iOS13已取消限制），以避免用户超出运">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8878/F4E795455468481A8311898A69B0A5B5">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8209/WEBRESOURCE52c45c3f98b7621a07ded703d3c08936">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8853/6E20F9EBB69D4612A8B85E0B916E7661">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8856/820932628CC74535BFE71DA510431273">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8858/E578E8A5E4A64D209A780382213F1AC1">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8860/2A68962F65BC4598A90860675F1CE063">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8867/EC283D699E9340769A016570A1FD459B">
+<meta property="og:image" content="http://note.youdao.com/yws/res/8869/6F0609247D2046E8BE65F7F1F213C3E4">
+<meta property="og:updated_time" content="2019-09-05T05:39:18.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS包体积优化">
+<meta name="twitter:description" content="App包体积优化调研1.背景随着业务的增加，工程中引入越来越多的业务代码和第三方库， 安装包体积越来越大。 App 的包大小做优化的目的一方面为用户手机节省更多的空间，同时也节省用户流量，提高用户的下载速度。  App包体积过大，对用户更新升级率也会有很大影响。 App Store 官方规定 App 安装包如果超过 200MB，只可以在 WiFi 环境下载（iOS13已取消限制），以避免用户超出运">
+<meta name="twitter:image" content="http://note.youdao.com/yws/res/8878/F4E795455468481A8311898A69B0A5B5">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2019/09/05/iOS包体积优化/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-right theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">RomanticMystery</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">iOS Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/iOS13新特性/" class="title">iOS13</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:55:46.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/BitCode脚本检测/" class="title">BitCode脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:41:18.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/iOS包体积优化/" class="title">iOS包体积优化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:28:31.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/18/String总结/" class="title">String总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-18T08:57:21.000Z" itemprop="datePublished">2019-03-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/04/Eureka使用/" class="title">Eureka使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-04T03:06:00.000Z" itemprop="datePublished">2019-03-04</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-iOS包体积优化" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS包体积优化
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/09/05/iOS包体积优化/" class="article-date">
+	  <time datetime="2019-09-05T05:28:31.000Z" itemprop="datePublished">2019-09-05</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/05/iOS包体积优化/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="App包体积优化调研"><a href="#App包体积优化调研" class="headerlink" title="App包体积优化调研"></a>App包体积优化调研</h3><h4 id="1-背景"><a href="#1-背景" class="headerlink" title="1.背景"></a>1.背景</h4><p>随着业务的增加，工程中引入越来越多的业务代码和第三方库， 安装包体积越来越大。</p>
+<p>App 的包大小做优化的目的一方面为用户手机节省更多的空间，同时也节省用户流量，提高用户的下载速度。 </p>
+<p>App包体积过大，对用户更新升级率也会有很大影响。</p>
+<p>App Store 官方规定 App 安装包如果超过 200MB，只可以在 WiFi 环境下载（iOS13已取消限制），以避免用户超出运营商套餐流量。</p>
+<h4 id="2-App包比重分析"><a href="#2-App包比重分析" class="headerlink" title="2.App包比重分析"></a>2.App包比重分析</h4><h5 id="2-1-ipa安装包构成"><a href="#2-1-ipa安装包构成" class="headerlink" title="2.1 ipa安装包构成"></a>2.1 ipa安装包构成</h5><p>.ipa（iOS App Store Package）：是一个压缩包，iOS 应用程序归档文件，即提交到 App Store Connect 的文件。</p>
+<p>.app（Application） ：是应用的具体描述，即安装到 iOS 设备上的文件。<br>当我们拿到 Archive 后的 .ipa，使用 “归档实用工具” 打开后，Payload 目录下放的就是 .app 文件。</p>
+<p>至于包体积，评判的标准，应以 App Store 上看到的为准。</p>
+<h5 id="2-3-结果分析"><a href="#2-3-结果分析" class="headerlink" title="2.3 结果分析"></a>2.3 结果分析</h5><p>图片资源占138M</p>
+<p>FrameWorks165.166M</p>
+<p>Unix可执行文件120.5M</p>
+<p>这三部分占比较重，因此对以下三部分着重进行了以下分析。</p>
+<h6 id="2-3-1-FrameWorks"><a href="#2-3-1-FrameWorks" class="headerlink" title="2.3.1 FrameWorks"></a>2.3.1 FrameWorks</h6><p>FrameWorks由framework项目中引入依赖库、dylib（系统库）两部分组成。</p>
+<h6 id="2-3-2-图片资源"><a href="#2-3-2-图片资源" class="headerlink" title="2.3.2 图片资源"></a>2.3.2 图片资源</h6><p>在.app第一层级目录下存在大量的图片资源，其中有几张单张大小达到500KB左右</p>
+<p>经过排查，定位发现有些图片来自于pod库，pod库在编写podspec的时候，用了以下的语句指定资源文件，导致打包的时候png被直接拷贝到安装包中。</p>
+<p>Assets.car文件是由Assets.xcassets生成的压缩文件。</p>
+<p>通过工具解压后分析文件夹中图片，发现存在体积较大图片，及重复图片。</p>
+<h6 id="2-3-3-可执行文件"><a href="#2-3-3-可执行文件" class="headerlink" title="2.3.3 可执行文件"></a>2.3.3 可执行文件</h6><p>LinkMap文件是Xcode产生可执行文件的同时生成的链接信息，用来描述可执行文件的构造成分。</p>
+<p>通过设置Project-&gt;Build Settings-&gt;Write Link Map File为YES， File，build完后就可以在相应的路径看到LinkMap文件，通过<a href="https://github.com/huanxsd/LinkMap" target="_blank" rel="noopener">LinkMap分析工具</a>进行分析，得出项目中占用可执行文件较大的模块。（此处列举了300K以上部分）</p>
+<h4 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h4><p><img src="http://note.youdao.com/yws/res/8878/F4E795455468481A8311898A69B0A5B5" alt="image"></p>
+<h5 id="3-1-资源瘦身"><a href="#3-1-资源瘦身" class="headerlink" title="3.1 资源瘦身"></a>3.1 资源瘦身</h5><h6 id="3-1-1-删除无用图片资源、重复图片资源"><a href="#3-1-1-删除无用图片资源、重复图片资源" class="headerlink" title="3.1.1 删除无用图片资源、重复图片资源"></a>3.1.1 删除无用图片资源、重复图片资源</h6><ol>
+<li><p>排查未使用图片资源</p>
+<p> 通过<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources</a>对项目中图片资源进行快速排查</p>
+<p> <img src="http://note.youdao.com/yws/res/8209/WEBRESOURCE52c45c3f98b7621a07ded703d3c08936" alt="无用资源排查.png"></p>
+<p> 注意：这个app的原理是，对某一文件目录下所有的源代码文件进行扫描，用正则表达式匹配出所有的@”xxx”字符串（会根据不同类型的源代码文件使用不同的匹配规则），形成“使用到的图片的集合”，然后扫描所有的图片文件名，查看哪些图片文件名不在“使用到的图片的集合”中，然后将这些图片文件呈现在结果中。</p>
+<p> 所以可能会有误伤，需要开发人员对未使用资源进行再次确认方可手动删除。</p>
+</li>
+<li><p>大图片处理</p>
+<p> 针对图片体积较大的问题，可由设计提供体积较小的切图，或者使用工具压缩后再放置项目中。</p>
+<p> 以下为较常用压缩工具：</p>
+<p> <a href="https://imageoptim.com/howto.html" target="_blank" rel="noopener">ImageOptim工具</a></p>
+<p> <a href="https://tinypng.com/" target="_blank" rel="noopener">TinyPng</a></p>
+<p> <img src="http://note.youdao.com/yws/res/8853/6E20F9EBB69D4612A8B85E0B916E7661" alt="image"></p>
+<p> 同时建议将主工程中散落的图片资源，比如DoAsset文件夹下图片资源，使用Apple推荐的.xcassets来管理，它会把里边的所有png格式的图片压缩成一个Assets.car文件，压缩比率比其他方式管理图片要高。</p>
+</li>
+<li><p>将图片放置到云端 On-Demand Resources</p>
+<p> 苹果从iOS 9开始引入了<a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/index.html#//apple_ref/doc/uid/TP40015083" target="_blank" rel="noopener">On Demand Resource</a>功能，即将部分图片可以被放置在苹果的服务器上，不随着app的下载而下载，系统会根据App运行情况，动态下载并加载所需资源，而在存在存储空间不足时，自动删除这类资源。也是一个优化安装包大小的方法。</p>
+<p> 不过On-Demand Resources一般在游戏关卡中使用较多，而且受到网络的影响需要下载并加载所需资源，在图片资源体量不太大的情况下，不太建议使用。</p>
+</li>
+<li><p>图片资源重复利用</p>
+<p>在基础组件库中，已存放了部分统一的的图标资源，可以在基础库中对使用率较高的图标进行统一存放。在减少App体积的同时，也方便后期对图标的更新与维护。</p>
+</li>
+<li><p>图片管理方式</p>
+<p>在调研中发现，目前项目中各个模块管理图片资源的方式不尽相同</p>
+<p>主工程有以下两种方式：</p>
+<ul>
+<li>png图片直接放在主工程目录下 </li>
+<li>xcassets管理 </li>
+</ul>
+<p>pod库有以下两种方式：</p>
+<ul>
+<li>图片放置bundle中，通过bundle访问图片资源</li>
+<li><p>xcassets管理</p>
+<p>从App瘦身的角度而言，xcassets 里的 2x 和 3x，会根据具体设备分发，不会同时包含。而 Bundle 会都包含。因此应尽量通过Asset Catalog来管理图片。</p>
+<p>另外在<a href="https://guides.cocoapods.org/syntax/podspec.html#resource_bundles" target="_blank" rel="noopener">Cocoapods的官方文档</a>中提到了两点： </p>
+</li>
+<li><p>使用resource_bundles能大大减小命名冲突的概率</p>
+</li>
+<li><p>使用resources资源文件是直接拷贝到app中的，没有经过Xcode的优化</p>
+<p><img src="http://note.youdao.com/yws/res/8856/820932628CC74535BFE71DA510431273" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/res/8858/E578E8A5E4A64D209A780382213F1AC1" alt="image"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="3-2-可执行文件优化"><a href="#3-2-可执行文件优化" class="headerlink" title="3.2 可执行文件优化"></a>3.2 可执行文件优化</h5><h6 id="3-2-1-排查未使用类及方法"><a href="#3-2-1-排查未使用类及方法" class="headerlink" title="3.2.1. 排查未使用类及方法"></a>3.2.1. 排查未使用类及方法</h6><p>项目中Dead Code Stripping此选项为Yes, C/C++/Swift 等静态语言编译器会在 link 的时候移除未使用的代码，但是对于OC等动态语言是无效的。</p>
+<p>因此只需监测OC无效代码即可（在项目启动优化时已进行排查）</p>
+<h6 id="3-2-2-去除功能重复三方库"><a href="#3-2-2-去除功能重复三方库" class="headerlink" title="3.2.2 去除功能重复三方库"></a>3.2.2 去除功能重复三方库</h6><p>对项目中功能类似的三方库进行排查，是否可进行精简（项目启动优化已进行）。</p>
+<h5 id="3-3-编译选项优化"><a href="#3-3-编译选项优化" class="headerlink" title="3.3 编译选项优化"></a>3.3 编译选项优化</h5><p>iOS 9之后<a href="https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f" target="_blank" rel="noopener">苹果官方</a>提供了App Thinning：Slicing、Bitcode，On Demand Resouces；</p>
+<h6 id="3-3-1-BitCode"><a href="#3-3-1-BitCode" class="headerlink" title="3.3.1 BitCode"></a>3.3.1 BitCode</h6><ol>
+<li><p>什么是BitCode</p>
+<p> Bitcode官方文档解释 是Xcode编译打包程序的一种中间码，在包含Bitcode配置的程序被上传到App Store之后，App Store也可以对其进行编译和链接。同时，Bitcode允许苹果后期重新优化程序的二进制执行文件。苹果会根据下载应用的用户手机指令集类型生成该指令集的二进制文件，进行下发下载 ,如下</p>
+<p> <img src="http://note.youdao.com/yws/res/8860/2A68962F65BC4598A90860675F1CE063" alt="image"></p>
+<p> 而在 BitCode 之前没我们都是把所有需要的 CPU 架构集合打包成一个 Fat Binary，结果就是用户最终下载的安装包之中有很多冗余的CPU 架构支持代码。</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>如何设置</p>
+<p> 在Build Settings下，将Enable Bitcode设置为Yes来完成。（项目中所有的库都必须支持bitcode）</p>
+</li>
+<li><p>需要注意的问题</p>
+<p> 工程开启BitCode要求我们依赖的静态库和动态库都是含有 BitCode 的，不然就会打包失败。集成的其他第三方库也需要支持Bitcode（项目目前不支持/(ㄒoㄒ)/~~）。</p>
+<p> 开启 BitCode 之后，由于最终的可执行文件是 Apple 自动生成的，同时产生新的符号表文件，所以我们使用原本打包生成的 dSYM 符号化文件是无法完成符号化的。</p>
+<p> 所以我们需要在上传至 App Store 时需要勾选 Include app symbols for your application to receive symboilcated crash logs from Apple：勾选之后 Apple 会给我们生成 dSYM，然后在 Xcode -&gt; Organizer 或者 iTunes Connect 中下载对应的 dSYM 来进行符号化。</p>
+</li>
+</ol>
+<h6 id="3-3-2-编译选项配置"><a href="#3-3-2-编译选项配置" class="headerlink" title="3.3.2 编译选项配置"></a>3.3.2 编译选项配置</h6><p><a href="https://help.apple.com/xcode/mac/current/#/itcaec37c2a6" target="_blank" rel="noopener">BuildSetting配置苹果官方</a></p>
+<p>在App体积优化上，可配置的选项：</p>
+<table>
+<thead>
+<tr>
+<th>编译选项</th>
+<th>当前状态</th>
+<th>用途</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimization Level</td>
+<td>Fastest,Smallest</td>
+<td>编译器执行所有优化，不会增加代码的长度，执行文件占用更少内存</td>
+<td>已配置</td>
+</tr>
+<tr>
+<td>Strip Linked Product</td>
+<td>YES</td>
+<td>去除符号信息</td>
+<td>已配置</td>
+</tr>
+<tr>
+<td>Dead Code Stripping</td>
+<td>YES</td>
+<td>C/C++/Swift 等静态语言编译器会在 link 的时候移除未使用的代码</td>
+<td>已配置</td>
+</tr>
+<tr>
+<td>Deployment PostProcessing</td>
+<td>NO</td>
+<td>Deployment的总开关</td>
+<td>可配置为Yes</td>
+</tr>
+<tr>
+<td>Symbols hidden by default</td>
+<td>YES</td>
+<td>去除符号信息</td>
+<td>已配置</td>
+</tr>
+<tr>
+<td>Compress PNG Files</td>
+<td>YES</td>
+<td>打包的时候对图片进行无损压缩</td>
+<td>已配置</td>
+</tr>
+<tr>
+<td>Remove Text Medadata From PNG Files</td>
+<td>YES</td>
+<td>移除 PNG 资源的文本字符，比如图像名称、创作时间、注释等信息</td>
+<td>已配置</td>
+</tr>
+</tbody>
+</table>
+<p>Deployment Postprocessing 是Deployment的总开关，所以在打开这个选项之前 Strip Linked Product是不起作用的。</p>
+<p>打开Deployment Postprocessing对包体积进行了对比，效果还是较明显的：</p>
+<table>
+<thead>
+<tr>
+<th>Deployment Postprocessing</th>
+<th>ipa大小（MB）</th>
+<th>.app大小(MB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开启前</td>
+<td>249.6</td>
+<td>443.5</td>
+</tr>
+<tr>
+<td>开启后</td>
+<td>243.3</td>
+<td>405.2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-监控机制"><a href="#4-监控机制" class="headerlink" title="4 监控机制"></a>4 监控机制</h4><h5 id="4-1-监控"><a href="#4-1-监控" class="headerlink" title="4.1 监控"></a>4.1 监控</h5><p>在对包体积做减法的同时，也要严控新版本功能迭代体积的增加。因此，建立预警机制，也显得尤为重要。</p>
+<p>在做调研的过程中，发现<a href="https://techblog.toutiao.com/2018/06/04/gan-huo-jin-ri-tou-tiao-iosduan-an-zhuang-bao-da-xiao-you-hua-si-lu-yu-shi-jian/" target="_blank" rel="noopener">今日头条的包体积监控机制</a>提供了一个很好的思路：</p>
+<p><img src="http://note.youdao.com/yws/res/8867/EC283D699E9340769A016570A1FD459B" alt="image"><br><img src="http://note.youdao.com/yws/res/8869/6F0609247D2046E8BE65F7F1F213C3E4" alt="image"></p>
+<h5 id="4-2-流程规范"><a href="#4-2-流程规范" class="headerlink" title="4.2 流程规范"></a>4.2 流程规范</h5><p>监控机制只是为了发现问题，更重要的是我们在开发的过程中，养成良好的开发习惯，避免造成这些问题。</p>
+<ul>
+<li>在实现新功能时，首先考虑通用组件是否已提供此功能的实现，可否复用</li>
+<li>在引入新的三方库时要慎重，是否会造成包体积的显著增加，考虑是否可以抽离，而不是引入该库</li>
+<li>对于新增加的图标等资源文件，要检查一下大小，若体积太大，压缩处理后再进行使用</li>
+<li>废弃模块及早清理；</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2019/09/05/iOS包体积优化/" title="iOS包体积优化" target="_blank" rel="external">http://yoursite.com/2019/09/05/iOS包体积优化/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">RomanticMystery</span><small class="ml-1x">iOS Developer</small></a></h3>
+        <div>春有百花秋有月，夏有凉风冬有雪。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/09/05/BitCode脚本检测/" title="BitCode脚本"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/03/18/String总结/" title="String总结"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan">
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
