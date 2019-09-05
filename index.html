@@ -353,7 +353,7 @@
 <p> 不过On-Demand Resources一般在游戏关卡中使用较多，而且受到网络的影响需要下载并加载所需资源，在图片资源体量不太大的情况下，不太建议使用。</p>
 </li>
 <li><p>图片资源重复利用</p>
-<p>在FDUIKit中，已存放了部分统一的的<a href="https://lanhuapp.com//web/#/item/project/board?pid=9a33e655-f0e9-49ba-9f07-2e2b2d4bbf79" target="_blank" rel="noopener">图标资源</a>，可以在基础库中对使用率较高的图标进行统一存放。在减少App体积的同时，也方便后期对图标的更新与维护。</p>
+<p>在基础组件库中，已存放了部分统一的的图标资源，可以在基础库中对使用率较高的图标进行统一存放。在减少App体积的同时，也方便后期对图标的更新与维护。</p>
 </li>
 <li><p>图片管理方式</p>
 <p>在调研中发现，目前项目中各个模块管理图片资源的方式不尽相同</p>
@@ -395,12 +395,11 @@
 </li>
 <li><p>需要注意的问题</p>
 <p> 工程开启BitCode要求我们依赖的静态库和动态库都是含有 BitCode 的，不然就会打包失败。集成的其他第三方库也需要支持Bitcode（项目目前不支持/(ㄒoㄒ)/~~）。</p>
+<p> 开启 BitCode 之后，由于最终的可执行文件是 Apple 自动生成的，同时产生新的符号表文件，所以我们使用原本打包生成的 dSYM 符号化文件是无法完成符号化的。</p>
+<p> 所以我们需要在上传至 App Store 时需要勾选 Include app symbols for your application to receive symboilcated crash logs from Apple：勾选之后 Apple 会给我们生成 dSYM，然后在 Xcode -&gt; Organizer 或者 iTunes Connect 中下载对应的 dSYM 来进行符号化。</p>
 </li>
 </ol>
-<pre><code>开启 BitCode 之后，由于最终的可执行文件是 Apple 自动生成的，同时产生新的符号表文件，所以我们使用原本打包生成的 dSYM 符号化文件是无法完成符号化的。
-
-所以我们需要在上传至 App Store 时需要勾选 Include app symbols for your application to receive symboilcated crash logs from Apple：勾选之后 Apple 会给我们生成 dSYM，然后在 Xcode -&gt; Organizer 或者 iTunes Connect 中下载对应的 dSYM 来进行符号化。
-</code></pre><h6 id="3-3-2-编译选项配置"><a href="#3-3-2-编译选项配置" class="headerlink" title="3.3.2 编译选项配置"></a>3.3.2 编译选项配置</h6><p><a href="https://help.apple.com/xcode/mac/current/#/itcaec37c2a6" target="_blank" rel="noopener">BuildSetting配置苹果官方</a></p>
+<h6 id="3-3-2-编译选项配置"><a href="#3-3-2-编译选项配置" class="headerlink" title="3.3.2 编译选项配置"></a>3.3.2 编译选项配置</h6><p><a href="https://help.apple.com/xcode/mac/current/#/itcaec37c2a6" target="_blank" rel="noopener">BuildSetting配置苹果官方</a></p>
 <p>在App体积优化上，可配置的选项：</p>
 <table>
 <thead>
