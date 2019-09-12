@@ -26,7 +26,7 @@
 <meta property="og:description" content="问题说明在我们使用UIButton, 同时设置了图片和文字，且没有设置固定宽度，采用自动布局时。 把系统【设置】-&amp;gt;【辅助功能】-&amp;gt;【粗体文本】开关打开，会出现文字和图片的布局有可能重叠，或者文字显示不全的问题。 解决方案有三种解决方案： 123// 通过设置resizableImage解决image = image.resizableImage(withCapInsets: UIEd">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/TestFont.png">
-<meta property="og:updated_time" content="2019-09-12T03:08:45.674Z">
+<meta property="og:updated_time" content="2019-09-12T03:12:01.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIButton 在粗体文本下的bug">
 <meta name="twitter:description" content="问题说明在我们使用UIButton, 同时设置了图片和文字，且没有设置固定宽度，采用自动布局时。 把系统【设置】-&amp;gt;【辅助功能】-&amp;gt;【粗体文本】开关打开，会出现文字和图片的布局有可能重叠，或者文字显示不全的问题。 解决方案有三种解决方案： 123// 通过设置resizableImage解决image = image.resizableImage(withCapInsets: UIEd">
@@ -280,7 +280,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 通过设置UIButton lineBreakMode 解决</span><br><span class="line">btn2.titleLabel?.lineBreakMode = .byClipping</span><br></pre></td></tr></table></figure>
 <pre><code>第三种方案：通过计算出文本宽度，给UIButton设置固定宽度，也可以解决这个问题
 </code></pre><p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/TestFont.png" alt="UIButton"></p>
-<p>至于是什么原因造成这个问题，不得而知，或许是系统的Bug。如果你也遇到了这个问题，可以暂时先用这种方式规避。</p>
+<p>至于是什么原因造成这个问题，不得而知，或许是系统的Bug。</p>
+<p>【参考链接】</p>
+<p><a href="https://juejin.im/pin/5ce4d8fb518825026ec4aa0c" target="_blank" rel="noopener">UIButton 在粗体文本下的系统 bug</a></p>
 
       
     </div>
