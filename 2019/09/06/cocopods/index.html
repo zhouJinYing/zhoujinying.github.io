@@ -18,17 +18,17 @@
   
   
   <title>cocopods | Hexo</title>
-  <meta name="description" content="Cocopods降级命令1sudo gem install -n /usr/local/bin cocoapods -v 1.7">
+  <meta name="description" content="Cocopods降级命令1sudo gem install -n /usr/local/bin cocoapods -v 1.7 创建私有库123456789101112131415161718191.根据pod命令自动创建pod lib create TestKit2.将工程提交到远端git库3.添加私有库到本地pod库pod repo add TestKit git@git.xxxx.git4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cocopods">
 <meta property="og:url" content="http://yoursite.com/2019/09/06/cocopods/index.html">
 <meta property="og:site_name" content="Romantic">
-<meta property="og:description" content="Cocopods降级命令1sudo gem install -n /usr/local/bin cocoapods -v 1.7">
+<meta property="og:description" content="Cocopods降级命令1sudo gem install -n /usr/local/bin cocoapods -v 1.7 创建私有库123456789101112131415161718191.根据pod命令自动创建pod lib create TestKit2.将工程提交到远端git库3.添加私有库到本地pod库pod repo add TestKit git@git.xxxx.git4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-06T01:54:35.245Z">
+<meta property="og:updated_time" content="2019-09-20T07:54:22.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocopods">
-<meta name="twitter:description" content="Cocopods降级命令1sudo gem install -n /usr/local/bin cocoapods -v 1.7">
+<meta name="twitter:description" content="Cocopods降级命令1sudo gem install -n /usr/local/bin cocoapods -v 1.7 创建私有库123456789101112131415161718191.根据pod命令自动创建pod lib create TestKit2.将工程提交到远端git库3.添加私有库到本地pod库pod repo add TestKit git@git.xxxx.git4">
   <!-- Canonical links -->
   <link rel="canonical" href="http://yoursite.com/2019/09/06/cocopods/index.html">
   
@@ -272,6 +272,8 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h5 id="Cocopods降级命令"><a href="#Cocopods降级命令" class="headerlink" title="Cocopods降级命令"></a>Cocopods降级命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/local/bin cocoapods -v 1.7</span><br></pre></td></tr></table></figure>
+<h5 id="创建私有库"><a href="#创建私有库" class="headerlink" title="创建私有库"></a>创建私有库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.根据pod命令自动创建</span><br><span class="line">pod lib create TestKit</span><br><span class="line"></span><br><span class="line">2.将工程提交到远端git库</span><br><span class="line"></span><br><span class="line">3.添加私有库到本地pod库</span><br><span class="line">pod repo add TestKit git@git.xxxx.git</span><br><span class="line"></span><br><span class="line">4.lint检查</span><br><span class="line">pod lib lint --verbose --allow-warnings --sources=&apos;git@xxx.git,https://github.com/CocoaPods/Specs.git,git@xxx.git&apos; </span><br><span class="line"></span><br><span class="line">5.打Tag (用Sourcetree等可视化工具也可)</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update podspec&quot;</span><br><span class="line">git push</span><br><span class="line">git tag 2.1.8</span><br><span class="line">git push --tags</span><br><span class="line">pod repo push xxxx.podspec --allow-warnings --verbose</span><br><span class="line">如果出现最后一步error时，先删除已打的tag，缓存</span><br></pre></td></tr></table></figure>
+<h5 id="检测pod库是否可用"><a href="#检测pod库是否可用" class="headerlink" title="检测pod库是否可用"></a>检测pod库是否可用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令：</span><br><span class="line">pod lib lint</span><br><span class="line">如果有警告可以使用命令忽略：</span><br><span class="line">pod lib lint --allow-warnings</span><br><span class="line">如果有问题，那么一般是podspec配置问题。</span><br><span class="line">成功提示：</span><br><span class="line">TestKit.podspec passed validation.</span><br></pre></td></tr></table></figure>
 
       
     </div>
