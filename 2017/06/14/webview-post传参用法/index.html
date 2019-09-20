@@ -17,17 +17,20 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>NSTimer | Hexo</title>
-  <meta property="og:type" content="article">
-<meta property="og:title" content="NSTimer">
-<meta property="og:url" content="http://yoursite.com/2019/01/14/NSTimer/index.html">
+  <title>webview post传参用法 | Hexo</title>
+  <meta name="description" content="iOS WebView Post传参用法（注意URLEncoding编码） UIWebViewWebView UrlEncoding陈年老坑 123456789101112131415// post请求传参数 UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds]; // 将UIWebV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webview post传参用法">
+<meta property="og:url" content="http://yoursite.com/2017/06/14/webview-post传参用法/index.html">
 <meta property="og:site_name" content="Romantic">
+<meta property="og:description" content="iOS WebView Post传参用法（注意URLEncoding编码） UIWebViewWebView UrlEncoding陈年老坑 123456789101112131415// post请求传参数 UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds]; // 将UIWebV">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T04:38:18.000Z">
+<meta property="og:updated_time" content="2019-09-20T08:19:04.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSTimer">
+<meta name="twitter:title" content="webview post传参用法">
+<meta name="twitter:description" content="iOS WebView Post传参用法（注意URLEncoding编码） UIWebViewWebView UrlEncoding陈年老坑 123456789101112131415// post请求传参数 UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds]; // 将UIWebV">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/2019/01/14/NSTimer/index.html">
+  <link rel="canonical" href="http://yoursite.com/2017/06/14/webview-post传参用法/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
   
@@ -238,14 +241,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-NSTimer" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <article id="post-webview-post传参用法" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      NSTimer
+      webview post传参用法
     </h1>
   
 
@@ -253,8 +256,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/01/14/NSTimer/" class="article-date">
-	  <time datetime="2019-01-14T04:38:18.000Z" itemprop="datePublished">2019-01-14</time>
+	<a href="/2017/06/14/webview-post传参用法/" class="article-date">
+	  <time datetime="2017-06-14T03:52:24.000Z" itemprop="datePublished">2017-06-14</time>
 	</a>
 </span>
         
@@ -262,13 +265,19 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/14/NSTimer/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/06/14/webview-post传参用法/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <p>iOS WebView Post传参用法（注意URLEncoding编码）</p>
+<p>UIWebView<br><a href="https://blog.jamespan.me/2015/05/17/url-encoding" target="_blank" rel="noopener">WebView UrlEncoding陈年老坑</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// post请求传参数</span><br><span class="line"> UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line"> </span><br><span class="line">// 将UIWebView添加到当前View</span><br><span class="line">[self.view addSubview:webView];</span><br><span class="line"></span><br><span class="line">// 设置访问的URL</span><br><span class="line">NSURL *url = [NSURL URLWithString:@&quot;http://www.example.com&quot;];</span><br><span class="line">NSURL *url = [NSURL URLWithString: @&quot;需要填写自己的URL&quot;];</span><br><span class="line">NSString *body = [NSString stringWithFormat: @&quot;arg1=%@&amp;arg2=%@&quot;, @&quot;val1&quot;,@&quot;val2&quot;]; </span><br><span class="line">NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];</span><br><span class="line">body = [body stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@&quot;#%&lt;&gt;[\\]^`&#123;|&#125;\&quot;]+&quot;].invertedSet];//切记要注意urlEnding编码 这个是坑啊</span><br><span class="line">[request setHTTPMethod: @&quot;POST&quot;];</span><br><span class="line">[request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];</span><br><span class="line">[webView loadRequest: request];</span><br></pre></td></tr></table></figure>
+<p>WKWebview</p>
+<p>post请求提交参数 存在参数不能提交的问题 <a href="http://www.jianshu.com/p/403853b63537" target="_blank" rel="noopener">附上解决问题链接</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/// WKWebview代理方法</span><br><span class="line">/* 1.在发送请求之前，决定是否跳转  */</span><br><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;</span><br><span class="line"></span><br><span class="line">/* 2.页面开始加载 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation;</span><br><span class="line"></span><br><span class="line">/* 3.在收到服务器的响应头，根据response相关信息，决定是否跳转。 */</span><br><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse  decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler;</span><br><span class="line"></span><br><span class="line">/* 4.开始获取到网页内容时返回，需要注入JS，在这里添加 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation;</span><br><span class="line"></span><br><span class="line">/* 5.页面加载完成之后调用 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;</span><br><span class="line">/* error - 页面加载失败时调用 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation;</span><br><span class="line">/* 其他 - 处理服务器重定向Redirect */</span><br><span class="line">- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <div class="article-footer">
@@ -293,13 +302,9 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2019/03/04/iOS绘制pdf/" title="iOS绘制pdf"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2017/11/16/Charts分析及使用/" title="Charts分析及使用"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
-    
-    <li class="next">
-      <a href="/2019/01/14/设置终端代理/" title="设置终端代理"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
     
     
   </ul>

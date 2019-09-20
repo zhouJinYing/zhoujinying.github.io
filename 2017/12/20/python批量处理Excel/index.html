@@ -17,17 +17,20 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>NSTimer | Hexo</title>
-  <meta property="og:type" content="article">
-<meta property="og:title" content="NSTimer">
-<meta property="og:url" content="http://yoursite.com/2019/01/14/NSTimer/index.html">
+  <title>python批量处理Excel | Hexo</title>
+  <meta name="description" content="// 命令行 python 进入python环境 import xlwings as xw   //测试是否安装成功  xw.__path__   // 查看安装目录  //用于批量修改Excel的脚本 #coding:utf-8 import xlwings as xw app = xw.App(visible=True, add_book=False) app.display_alerts=F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python批量处理Excel">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/python批量处理Excel/index.html">
 <meta property="og:site_name" content="Romantic">
+<meta property="og:description" content="// 命令行 python 进入python环境 import xlwings as xw   //测试是否安装成功  xw.__path__   // 查看安装目录  //用于批量修改Excel的脚本 #coding:utf-8 import xlwings as xw app = xw.App(visible=True, add_book=False) app.display_alerts=F">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T04:38:18.000Z">
+<meta property="og:updated_time" content="2019-09-20T08:13:48.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSTimer">
+<meta name="twitter:title" content="python批量处理Excel">
+<meta name="twitter:description" content="// 命令行 python 进入python环境 import xlwings as xw   //测试是否安装成功  xw.__path__   // 查看安装目录  //用于批量修改Excel的脚本 #coding:utf-8 import xlwings as xw app = xw.App(visible=True, add_book=False) app.display_alerts=F">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/2019/01/14/NSTimer/index.html">
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/python批量处理Excel/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
   
@@ -238,14 +241,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-NSTimer" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <article id="post-python批量处理Excel" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      NSTimer
+      python批量处理Excel
     </h1>
   
 
@@ -253,8 +256,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/01/14/NSTimer/" class="article-date">
-	  <time datetime="2019-01-14T04:38:18.000Z" itemprop="datePublished">2019-01-14</time>
+	<a href="/2017/12/20/python批量处理Excel/" class="article-date">
+	  <time datetime="2017-12-20T08:11:52.000Z" itemprop="datePublished">2017-12-20</time>
 	</a>
 </span>
         
@@ -262,13 +265,32 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/14/NSTimer/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/12/20/python批量处理Excel/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <pre><code>// 命令行 python 进入python环境
+import xlwings as xw   //测试是否安装成功 
+xw.__path__   // 查看安装目录
+
+//用于批量修改Excel的脚本
+#coding:utf-8
+import xlwings as xw
+app = xw.App(visible=True, add_book=False)
+app.display_alerts=False
+names = [&apos;&apos;A,&apos;B&apos;]
+for index in range(len(names)):
+    FileName = &quot;/Users/rhc/Desktop/XXX/&quot;+names[index]+&quot;.xlsx&quot;
+    wb = xw.Book(FileName.decode(&apos;utf8&apos;))
+    sht = wb.sheets.active
+    str = &quot;2017年9月&quot;
+    sht.range(&apos;I2&apos;).value = str.decode(&apos;utf8&apos;)
+    wb.save()
+    wb.close()
+    app.quit()
+</code></pre>
       
     </div>
     <div class="article-footer">
@@ -293,12 +315,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2019/03/04/iOS绘制pdf/" title="iOS绘制pdf"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2018/11/12/iOS项目国际化/" title="iOS项目国际化"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2019/01/14/设置终端代理/" title="设置终端代理"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2017/11/16/Charts分析及使用/" title="Charts分析及使用"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
