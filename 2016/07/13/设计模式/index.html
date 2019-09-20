@@ -17,20 +17,25 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>webview post传参用法 | Hexo</title>
-  <meta name="description" content="iOS WebView Post传参用法（注意URLEncoding编码） UIWebViewWebView UrlEncoding陈年老坑 123456789101112131415// post请求传参数 UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds]; // 将UIWebV">
+  <title>设计模式 | Hexo</title>
+  <meta name="description" content="一、MVC设计模式 1、模式分析 Models（模型）：数据层，负责处理数据的数据接口层； Views（视图）：展示层，以UI开头的类基本属于Views； Controller：重控制器，负责Model与View之间连接，当用户对View操作时它负责去修改相应的model；当Model值发生变化时它负责更新对应的View； 2、性能分析 划分层次：View和Model实现了分离，但View和Con">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webview post传参用法">
-<meta property="og:url" content="http://yoursite.com/2017/06/14/webview-post传参用法/index.html">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2016/07/13/设计模式/index.html">
 <meta property="og:site_name" content="Romantic">
-<meta property="og:description" content="iOS WebView Post传参用法（注意URLEncoding编码） UIWebViewWebView UrlEncoding陈年老坑 123456789101112131415// post请求传参数 UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds]; // 将UIWebV">
+<meta property="og:description" content="一、MVC设计模式 1、模式分析 Models（模型）：数据层，负责处理数据的数据接口层； Views（视图）：展示层，以UI开头的类基本属于Views； Controller：重控制器，负责Model与View之间连接，当用户对View操作时它负责去修改相应的model；当Model值发生变化时它负责更新对应的View； 2、性能分析 划分层次：View和Model实现了分离，但View和Con">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-20T08:19:04.769Z">
+<meta property="og:image" content="https://gitlab.com/1995zhouJinYing/document/raw/master/model1.png">
+<meta property="og:image" content="https://gitlab.com/1995zhouJinYing/document/raw/master/model2.png">
+<meta property="og:image" content="https://gitlab.com/1995zhouJinYing/document/raw/master/model3.png">
+<meta property="og:image" content="https://gitlab.com/1995zhouJinYing/document/raw/master/model4.png">
+<meta property="og:updated_time" content="2019-09-20T08:31:58.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webview post传参用法">
-<meta name="twitter:description" content="iOS WebView Post传参用法（注意URLEncoding编码） UIWebViewWebView UrlEncoding陈年老坑 123456789101112131415// post请求传参数 UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds]; // 将UIWebV">
+<meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="一、MVC设计模式 1、模式分析 Models（模型）：数据层，负责处理数据的数据接口层； Views（视图）：展示层，以UI开头的类基本属于Views； Controller：重控制器，负责Model与View之间连接，当用户对View操作时它负责去修改相应的model；当Model值发生变化时它负责更新对应的View； 2、性能分析 划分层次：View和Model实现了分离，但View和Con">
+<meta name="twitter:image" content="https://gitlab.com/1995zhouJinYing/document/raw/master/model1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/2017/06/14/webview-post传参用法/index.html">
+  <link rel="canonical" href="http://yoursite.com/2016/07/13/设计模式/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
   
@@ -241,14 +246,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-webview-post传参用法" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <article id="post-设计模式" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      webview post传参用法
+      设计模式
     </h1>
   
 
@@ -256,8 +261,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/06/14/webview-post传参用法/" class="article-date">
-	  <time datetime="2017-06-14T03:52:24.000Z" itemprop="datePublished">2017-06-14</time>
+	<a href="/2016/07/13/设计模式/" class="article-date">
+	  <time datetime="2016-07-13T01:51:37.000Z" itemprop="datePublished">2016-07-13</time>
 	</a>
 </span>
         
@@ -265,18 +270,57 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/06/14/webview-post传参用法/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/07/13/设计模式/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>iOS WebView Post传参用法（注意URLEncoding编码）</p>
-<p>UIWebView<br><a href="https://blog.jamespan.me/2015/05/17/url-encoding" target="_blank" rel="noopener">WebView UrlEncoding陈年老坑</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// post请求传参数</span><br><span class="line"> UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line"> </span><br><span class="line">// 将UIWebView添加到当前View</span><br><span class="line">[self.view addSubview:webView];</span><br><span class="line"></span><br><span class="line">// 设置访问的URL</span><br><span class="line">NSURL *url = [NSURL URLWithString:@&quot;http://www.example.com&quot;];</span><br><span class="line">NSURL *url = [NSURL URLWithString: @&quot;需要填写自己的URL&quot;];</span><br><span class="line">NSString *body = [NSString stringWithFormat: @&quot;arg1=%@&amp;arg2=%@&quot;, @&quot;val1&quot;,@&quot;val2&quot;]; </span><br><span class="line">NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];</span><br><span class="line">body = [body stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@&quot;#%&lt;&gt;[\\]^`&#123;|&#125;\&quot;]+&quot;].invertedSet];//切记要注意urlEnding编码 这个是坑啊</span><br><span class="line">[request setHTTPMethod: @&quot;POST&quot;];</span><br><span class="line">[request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];</span><br><span class="line">[webView loadRequest: request];</span><br></pre></td></tr></table></figure>
-<p>WKWebview</p>
-<p>post请求提交参数 存在参数不能提交的问题 <a href="http://www.jianshu.com/p/403853b63537" target="_blank" rel="noopener">附上解决问题链接</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/// WKWebview代理方法</span><br><span class="line">/* 1.在发送请求之前，决定是否跳转  */</span><br><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;</span><br><span class="line"></span><br><span class="line">/* 2.页面开始加载 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation;</span><br><span class="line"></span><br><span class="line">/* 3.在收到服务器的响应头，根据response相关信息，决定是否跳转。 */</span><br><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse  decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler;</span><br><span class="line"></span><br><span class="line">/* 4.开始获取到网页内容时返回，需要注入JS，在这里添加 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation;</span><br><span class="line"></span><br><span class="line">/* 5.页面加载完成之后调用 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;</span><br><span class="line">/* error - 页面加载失败时调用 */</span><br><span class="line">- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation;</span><br><span class="line">/* 其他 - 处理服务器重定向Redirect */</span><br><span class="line">- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation;</span><br></pre></td></tr></table></figure>
+        <p>一、MVC设计模式</p>
+<p>1、模式分析</p>
+<p>Models（模型）：数据层，负责处理数据的数据接口层；</p>
+<p>Views（视图）：展示层，以UI开头的类基本属于Views；</p>
+<p>Controller：重控制器，负责Model与View之间连接，当用户对View操作时它负责去修改相应的model；当Model值发生变化时它负责更新对应的View；</p>
+<p>2、性能分析</p>
+<p>划分层次：View和Model实现了分离，但View和Controller耦合太厉害；</p>
+<p>可测性：划分不清楚，导致只有Model可进行测试；</p>
+<p>易用性：相较于其他设计模式，代码量少，易上手。</p>
+<p>3、模型分析图（摘自网络）<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model1.png" alt=""></p>
+<p>二、MVP设计模式</p>
+<p>1、模式分析</p>
+<p>Models：数据层</p>
+<p>ViewController：视图控制器，实际扮演View的角色</p>
+<p>Presenter：只负责更新数据和视图状态</p>
+<p>2、性能分析</p>
+<p>划分层次：划分了Presenter和Model以及简单的视图</p>
+<p>可测性：可通过View来测试大部分的业务逻辑</p>
+<p>易用性：思路清晰，但代码量较多</p>
+<p>3、模型分析图（摘自网络）<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model2.png" alt=""></p>
+<p>三、MVVM设计模式</p>
+<p>1、模式分析</p>
+<p>Model：数据访问层</p>
+<p>View：UI界面</p>
+<p>ViewModel：View的抽象，负责View与Model之间的信息转换</p>
+<p>2、性能分析</p>
+<p>划分层次：划分了Model、View、以及ModelView，与其他设计模式主要区别在于ModelView的划分。</p>
+<p>可测性： 因为ViewModel对View是分离的，测试简单。</p>
+<p>易用性： 简洁、易用性较强。</p>
+<p>3、模型分析图（摘自网络）<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model3.png" alt=""></p>
+<p>四、三种设计模式总结(附分析表)<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model4.png" alt=""></p>
+<p>1、就开发速度而言，Cocoa MVC是最好的架构选择方案</p>
+<p>2、MVP可测试性强、代码量大</p>
+<p>3、MVVM集合了上述方法的有点，可测试性很强。</p>
+<p>五、ReactiveCocoa</p>
+<p>结合了函数式编程、响应式编程使用RAC来解决问题，不需考虑调用顺序，直接考虑结果，代码高聚合，方便管理。</p>
+<p>当某些事件响应时，可通过RAC来处理某些业务逻辑，比如按钮的点击使用action，ScrollView滚动使用delegate，属性值改变使用KVO等系统提供的方式。</p>
+<p>六、体会</p>
+<p>通过在网上查找ReactiveCocoa的相关资料接触到RACSiganl信号类，之前未曾接触使用过，还是存在一些难度，不能透彻了解。对MVC、MVP、MVVM这三种设计模式已有一定了解，希望在以后能够结合实际项目，进行学以致用。</p>
+<p>七、重点参考资料</p>
+<p><1><a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html</a></1></p>
+<p><2><a href="http://blog.csdn.net/li_shuang_ls/article/details/50176891" target="_blank" rel="noopener">http://blog.csdn.net/li_shuang_ls/article/details/50176891</a></2></p>
+<p><3><a href="http://www.cocoachina.com/ios/20160108/14916.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20160108/14916.html</a></3></p>
+<p><4><a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="noopener">http://www.jianshu.com/p/87ef6720a096</a></4></p>
+<p><5><a href="https://objccn.io/issue-13-1/" target="_blank" rel="noopener">https://objccn.io/issue-13-1/</a></5></p>
 
       
     </div>
@@ -302,13 +346,9 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2017/11/16/Charts分析及使用/" title="Charts分析及使用"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2017/06/14/webview-post传参用法/" title="webview post传参用法"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
-    
-    <li class="next">
-      <a href="/2016/07/13/设计模式/" title="设计模式"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
     
     
   </ul>
