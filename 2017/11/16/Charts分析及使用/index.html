@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Charts分析及使用 | Hexo</title>
+  <meta name="description" content="##1.Charts源码分析 #####1.1 文件组结构 #####1.2 ChartView类型图表简析BarLineChartViewBase与PieRadarChartViewBase共同点为均有横坐标xAxis区别在于BarLineChartViewBase有YAlxis纵坐标 #####1.3 数据源ChartDataEntry组成ChartDataSet,多组ChartDataSet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Charts分析及使用">
+<meta property="og:url" content="http://yoursite.com/2017/11/16/Charts分析及使用/index.html">
+<meta property="og:site_name" content="Romantic">
+<meta property="og:description" content="##1.Charts源码分析 #####1.1 文件组结构 #####1.2 ChartView类型图表简析BarLineChartViewBase与PieRadarChartViewBase共同点为均有横坐标xAxis区别在于BarLineChartViewBase有YAlxis纵坐标 #####1.3 数据源ChartDataEntry组成ChartDataSet,多组ChartDataSet">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2467509-4325103ab74df11c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2467509-ad703c67c05dea01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-20T08:10:39.021Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Charts分析及使用">
+<meta name="twitter:description" content="##1.Charts源码分析 #####1.1 文件组结构 #####1.2 ChartView类型图表简析BarLineChartViewBase与PieRadarChartViewBase共同点为均有横坐标xAxis区别在于BarLineChartViewBase有YAlxis纵坐标 #####1.3 数据源ChartDataEntry组成ChartDataSet,多组ChartDataSet">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2467509-4325103ab74df11c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2017/11/16/Charts分析及使用/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-right theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://zhoujinying.github.io/" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">RomanticMystery</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">iOS Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form" method="GET" action="https://www.baidu.com/s?">
+	<div class="input-group">
+    	<input name="wd" type="text" class="form-control search-form-input" placeholder="搜索">
+	    <span class="input-group-btn">
+	    	<button type="submit" class=" btn btn-flat search-form-submit"><i class="icon icon-search"></i></button>
+	    </span>
+    </div>
+</form>
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/.">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/12/UIButton-在粗体文本下的bug/" class="title">UIButton 在粗体文本下的bug</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-12T02:27:24.000Z" itemprop="datePublished">2019-09-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/06/cocopods/" class="title">cocopods</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-06T01:51:56.000Z" itemprop="datePublished">2019-09-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/iOS13/" class="title">iOS13</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:55:46.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/BitCode脚本检测/" class="title">BitCode脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:41:18.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/05/iOS包体积优化/" class="title">iOS包体积优化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-05T05:28:31.000Z" itemprop="datePublished">2019-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Charts分析及使用" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Charts分析及使用
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/11/16/Charts分析及使用/" class="article-date">
+	  <time datetime="2017-11-16T08:47:34.000Z" itemprop="datePublished">2017-11-16</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/16/Charts分析及使用/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>##1.Charts源码分析</p>
+<p>#####1.1 文件组结构<br><img src="http://upload-images.jianshu.io/upload_images/2467509-4325103ab74df11c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ20171114-110302@2x.png"></p>
+<p>#####1.2 ChartView类型图表简析<br>BarLineChartViewBase与PieRadarChartViewBase共同点为均有横坐标xAxis区别在于BarLineChartViewBase有YAlxis纵坐标<br><img src="http://upload-images.jianshu.io/upload_images/2467509-ad703c67c05dea01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>#####1.3 数据源<br>ChartDataEntry组成ChartDataSet,多组ChartDataSet构成ChartData。</p>
+<p>#####1.4 渲染绘制过程<br>设置了chartView的data之后，在set方法里调用dataChanged的通知notifyDataSetChanged()，这个方法的具体实现是在每个子类的ChartView中自己实现，主要做的事情是：</p>
+<p>1&gt; 重新计算边界值和offset偏移值<br>2&gt; 调用setNeedsDisplay(),触发视图界面的刷新<br>3&gt; 在ChartView的几类和子类的drawRect方法中进行界面渲染：<br>i&gt;. 获取当前的CGContext<br>ii&gt;. 绘制横纵坐标轴<br>iii&gt;. 绘制数据（我们提供的数据源）<br>iv&gt;. 绘制额外的补充数据<br>v&gt;. 绘制图例（实际场景中饼图必须，其他图按需）<br>vi&gt;. 绘制description（描述语）</p>
+<p>##2.使用场景<br>使用Charts框架可以实现折线图、柱形图、折线图、散点图、饼图等，较常用的为折线图、柱形图。</p>
+<p>##3.基本用法 以柱状图为例</p>
+<p>#####3.1 创建ChartView表格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.barChartView = [[BarChartView alloc] initWithFrame:CGRectMake(10, 300, self.view.frame.size.width - 20, 158)];</span><br><span class="line">self.barChartView.delegate = self;//设置代理</span><br><span class="line">[self.view addSubview:self.barChartView];</span><br></pre></td></tr></table></figure></p>
+<p>#####3.2 基本样式 （按需设置）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">  self.barChartView.backgroundColor = [UIColor colorWithRed:230/255.0f green:253/255.0f blue:253/255.0f alpha:1];</span><br><span class="line">  self.barChartView.noDataText = @&quot;暂无数据&quot;;//没有数据时的文字提示</span><br><span class="line">  self.barChartView.drawValueAboveBarEnabled = YES;//数值显示在柱形的上面还是下面</span><br><span class="line">  self.barChartView.drawBarShadowEnabled = NO;//是否绘制柱形的阴影背景</span><br><span class="line">  self.barChartView.rightAxis.enabled = NO;//不绘制右边轴</span><br><span class="line">  self.barChartView.leftAxis.enabled = NO;//不绘制左边轴</span><br><span class="line">  self.barChartView.xAxis.enabled = NO;//不绘制X轴</span><br><span class="line">  self.barChartView.legend.enabled = NO;//不显示图例说明</span><br><span class="line">  self.barChartView.descriptionText = @&quot;&quot;;//右下角的description文字样式不显示，就设为空字符串即</span><br><span class="line">/*</span><br><span class="line">   //X轴样式</span><br><span class="line">   ChartXAxis *xAxis = self.barChartView.xAxis;</span><br><span class="line">   xAxis.axisLineWidth = 1;//设置X轴线宽</span><br><span class="line">   xAxis.labelPosition = XAxisLabelPositionBottom;//X轴的显示位置，默认是显示在上面的</span><br><span class="line">   xAxis.drawGridLinesEnabled = NO;//不绘制网格线</span><br><span class="line">   xAxis.labelTextColor = [UIColor brownColor];//label文字颜色</span><br><span class="line">   </span><br><span class="line">  //左边Y轴样式</span><br><span class="line">  ChartYAxis *leftAxis = self.barChartView.leftAxis;//获取左边Y轴</span><br><span class="line">  leftAxis.labelCount = 5;//Y轴label数量，数值不一定，如果forceLabelsEnabled等于YES, 则强制绘制制定数量的label, 但是可能不平均</span><br><span class="line">  leftAxis.forceLabelsEnabled = NO;//不强制绘制制定数量的label</span><br><span class="line">  leftAxis.axisMaxValue = 105;//设置Y轴的最大值</span><br><span class="line">  leftAxis.inverted = NO;//是否将Y轴进行上下翻转</span><br><span class="line">  leftAxis.axisLineWidth = 0.5;//Y轴线宽</span><br><span class="line">  leftAxis.axisLineColor = [UIColor blackColor];//Y轴颜色</span><br><span class="line">  leftAxis.labelPosition = YAxisLabelPositionOutsideChart;//label位置</span><br><span class="line">  leftAxis.labelTextColor = [UIColor brownColor];//文字颜色</span><br><span class="line">  leftAxis.labelFont = [UIFont systemFontOfSize:10.0f];//文字字体</span><br><span class="line">  //网格线样式</span><br><span class="line">  leftAxis.gridLineDashLengths = @[@3.0f, @3.0f];//设置虚线样式的网格线</span><br><span class="line">  leftAxis.gridColor = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1];//网格线颜色</span><br><span class="line">  leftAxis.gridAntialiasEnabled = YES;//开启抗锯齿</span><br><span class="line">  //添加限制线</span><br><span class="line">  ChartLimitLine *limitLine = [[ChartLimitLine alloc] initWithLimit:80 label:@&quot;限制线&quot;];</span><br><span class="line">  limitLine.lineWidth = 2;</span><br><span class="line">  limitLine.lineColor = [UIColor greenColor];</span><br><span class="line">  limitLine.lineDashLengths = @[@5.0f, @5.0f];//虚线样式</span><br><span class="line">  limitLine.labelPosition = ChartLimitLabelPositionRightTop;//位置</span><br><span class="line">  [leftAxis addLimitLine:limitLine];//添加到Y轴上</span><br><span class="line">  leftAxis.drawLimitLinesBehindDataEnabled = YES;//设置限制线绘制在柱形图的后面</span><br><span class="line">  */</span><br></pre></td></tr></table></figure></p>
+<p>#####3.3 交互设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.barChartView.scaleYEnabled = NO;//取消Y轴缩放</span><br><span class="line">self.barChartView.doubleTapToZoomEnabled = NO;//取消双击缩放</span><br><span class="line">self.barChartView.dragEnabled = YES;//启用拖拽图表</span><br><span class="line">self.barChartView.dragDecelerationEnabled = YES;//拖拽后是否有惯性效果</span><br><span class="line">self.barChartView.dragDecelerationFrictionCoef = 0.9;//拖拽后惯性效果的摩擦系数(0~1)，数值越小，惯性越不明显</span><br><span class="line">[self.barChartView setVisibleXRangeMinimum:10.f];//设置只滑动 不缩放 (系统内部默认是先缩放后滑动)</span><br><span class="line">[self.barChartView setVisibleXRangeMaximum:10.f];</span><br></pre></td></tr></table></figure>
+<p>#####3.4 设置动画效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.barChartView animateWithYAxisDuration:1.5f];//可以设置X轴和Y轴的动画效果</span><br></pre></td></tr></table></figure></p>
+<p>#####3.5 表格数据设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> //为柱形图设置数据</span><br><span class="line">- (BarChartData *)setData&#123;</span><br><span class="line">    int xVals_count = 18;//X轴上要显示多少条数据</span><br><span class="line">    //X轴上面需要显示的数据</span><br><span class="line">    NSMutableArray *xVals = [[NSMutableArray alloc] init];</span><br><span class="line">    for (int i = 0; i &lt; xVals_count; i++) &#123;</span><br><span class="line">        [xVals addObject:[NSString stringWithFormat:@&quot;%d月&quot;, i+1]];</span><br><span class="line">    &#125;</span><br><span class="line">    //对应Y轴上面需要显示的数据</span><br><span class="line">    NSMutableArray *yVals = [[NSMutableArray alloc] init];</span><br><span class="line">    for (int i = 0; i &lt; xVals_count; i++) &#123;</span><br><span class="line">        double val = 20+i&gt;32?32:20+i;</span><br><span class="line">        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:i y:val];</span><br><span class="line">        [yVals addObject:entry];</span><br><span class="line">    &#125;</span><br><span class="line">    //创建BarChartDataSet对象，其中包含有Y轴数据信息，以及可以设置柱形样式</span><br><span class="line">    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithValues:yVals label:nil];</span><br><span class="line">    set1.drawValuesEnabled = YES;//是否在柱形图上面显示数值</span><br><span class="line">    set1.highlightEnabled = NO;//点击选中柱形图是否有高亮效果，（双击空白处取消选中）</span><br><span class="line">    [set1 setColors:ChartColorTemplates.material];//设置柱形图颜色</span><br><span class="line">    set1.drawValuesEnabled = YES;//是否填充颜色</span><br><span class="line">    //将BarChartDataSet对象放入数组中</span><br><span class="line">    NSMutableArray *dataSets = [[NSMutableArray alloc] init];</span><br><span class="line">    [dataSets addObject:set1];</span><br><span class="line">    </span><br><span class="line">    //创建BarChartData对象, 此对象就是barChartView需要最终数据对象</span><br><span class="line">    BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];</span><br><span class="line">    [data setValueTextColor:[UIColor orangeColor]];//文字颜色</span><br><span class="line">    data.barWidth = 0.6;//总共为1 数值越大柱状条的宽度越大</span><br><span class="line">    return data;</span><br><span class="line">&#125;</span><br><span class="line"> //为柱形图提供数据</span><br><span class="line">    self.barChartView.data = [self setData];</span><br></pre></td></tr></table></figure></p>
+<p>#####3.6 常用代理事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> #pragma mark - ChartViewDelegate</span><br><span class="line">//点击选中柱形时回调</span><br><span class="line">- (void)chartValueSelected:(ChartViewBase * _Nonnull)chartView entry:(ChartDataEntry * _Nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * _Nonnull)highlight&#123;</span><br><span class="line">&#125;</span><br><span class="line">//没有选中柱形图时回调，当选中一个柱形图后，在空白处双击，就可以取消选择，此时会回调此方法</span><br><span class="line">- (void)chartValueNothingSelected:(ChartViewBase * _Nonnull)chartView&#123;</span><br><span class="line">    NSLog(@&quot;---chartValueNothingSelected---&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//放大图表时回调</span><br><span class="line">- (void)chartScaled:(ChartViewBase * _Nonnull)chartView scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY&#123;</span><br><span class="line">//    NSLog(@&quot;---chartScaled---scaleX:%g, scaleY:%g&quot;, scaleX, scaleY);</span><br><span class="line">&#125;</span><br><span class="line">//拖拽图表时回调</span><br><span class="line">- (void)chartTranslated:(ChartViewBase * _Nonnull)chartView dX:(CGFloat)dX dY:(CGFloat)dY&#123;</span><br><span class="line">//    NSLog(@&quot;---chartTranslated---dX:%g, dY:%g&quot;, dX, dY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#####3.7 数据改变时 刷新数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   -(void)updateData&#123;</span><br><span class="line">    //数据改变时，刷新数据</span><br><span class="line">    self.data = [self setData];</span><br><span class="line">    self.barChartView.data = self.data;</span><br><span class="line">    [self.barChartView notifyDataSetChanged];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##4.使用注意事项<br>1&gt; y轴显示默认为double类型，需要自定义的，比如需要显示为9%，此时需要去自定义一个类遵循<ichartaxisvalueformatter>的协议来完成<br>2&gt; 未提供方法设置柱状图的圆角，需要自行修改三方库文件drawDataSet方法，可参照如下<a href="https://github.com/danielgindi/Charts/issues/1066" target="_blank" rel="noopener">https://github.com/danielgindi/Charts/issues/1066</a></ichartaxisvalueformatter></p>
+<p>##5.参考资料<br>【Charts开源库链接】 <a href="https://github.com/danielgindi/Charts" target="_blank" rel="noopener">https://github.com/danielgindi/Charts</a><br>【Charts源码解读】<a href="http://www.jianshu.com/p/b183ff57df01" target="_blank" rel="noopener">http://www.jianshu.com/p/b183ff57df01</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/11/12/iOS项目国际化/" title="iOS项目国际化"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://zhoujinying.github.io/" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2019 ZhouJinYing
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:yoursite.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '5' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
