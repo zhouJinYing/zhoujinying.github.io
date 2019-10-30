@@ -28,7 +28,10 @@
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/image1.png">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/4.png">
-<meta property="og:updated_time" content="2019-10-30T06:39:01.475Z">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/5.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/6.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/7.png">
+<meta property="og:updated_time" content="2019-10-30T08:05:45.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件化图片资源管理">
 <meta name="twitter:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备">
@@ -279,12 +282,104 @@
 <h5 id="1-图片集成方式"><a href="#1-图片集成方式" class="headerlink" title="1.图片集成方式"></a>1.图片集成方式</h5><p>现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。</p>
 <p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png" alt=""></p>
 <p>这样会造成安装的设备中同时存在@2x和@3x的图片。</p>
-<p>如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备分发，不会同时包含。（App Slicing）</p>
+<p>如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备分发，只包含符合目标设备分辨率的图片，不会同时包含，以此来缩小用户下载的包体积。（App Slicing）</p>
 <p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/image1.png" alt=""></p>
 <p>以下为实验结果：</p>
 <p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/4.png" alt=""></p>
 <p>结论：使用Asset Log取代Bundle管理图片的形式</p>
-<h5 id="2-图片资源引用方式"><a href="#2-图片资源引用方式" class="headerlink" title="2.图片资源引用方式"></a>2.图片资源引用方式</h5><h5 id="3-IconFont"><a href="#3-IconFont" class="headerlink" title="3.IconFont"></a>3.IconFont</h5><h5 id="AssetLog-缓存影响…"><a href="#AssetLog-缓存影响…" class="headerlink" title="AssetLog 缓存影响…"></a>AssetLog 缓存影响…</h5>
+<h5 id="2-图片资源引用方式"><a href="#2-图片资源引用方式" class="headerlink" title="2.图片资源引用方式"></a>2.图片资源引用方式</h5><p>使用Asset Log管理图片资源来取代Bundle管理图片的形式，包体积会减少，那么我们在使用时也需要注意以下问题</p>
+<h6 id="2-1-图片资源冲突"><a href="#2-1-图片资源冲突" class="headerlink" title="2.1 图片资源冲突"></a>2.1 图片资源冲突</h6><p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/5.png" alt=""></p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/6.png" alt=""></p>
+<p>经过打包测试，在静态库中Asset Log管理的图片资源是与主工程Asset Log管理的图片资源统一生成为一个Asset.car的文件，所以其中有可能存在图片冲突的问题。</p>
+<p>如果两个图片名称一致，但是图片是不一样的内容，那么就会存在加载错图片的问题。所以在静态库中使用Asset Log要格外注意。</p>
+<h6 id="2-2-图片管理方式分析"><a href="#2-2-图片管理方式分析" class="headerlink" title="2.2 图片管理方式分析"></a>2.2 图片管理方式分析</h6><p>那么pod库中，我们改通过何种方式去管理图片资源，有各有什么优缺点，以下进行了整理</p>
+<table>
+<thead>
+<tr>
+<th>—</th>
+<th>图片管理方式</th>
+<th>引用方式</th>
+<th>分析</th>
+<th>是否建议使用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静态库</td>
+<td>Bundle</td>
+<td>resources</td>
+<td>同时存在@2x和@3x的图片</td>
+<td>❌</td>
+<td>确认下不同pod库 bundle名字相同会存在什么问题</td>
+</tr>
+<tr>
+<td>静态库</td>
+<td>Bundle</td>
+<td>resource_bundle</td>
+<td>同时存在@2x和@3x的图片</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>静态库</td>
+<td>Asset Log</td>
+<td>resources</td>
+<td>仅包含一种分辨率图片，但有可能与主工程图片资源冲突</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>静态库</td>
+<td>Asset Log</td>
+<td>resource_bundle</td>
+<td>仅包含一种分辨率图片，且不会有冲突</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>动态库</td>
+<td>Bundle</td>
+<td>resources</td>
+<td>同时存在@2x和@3x的图片</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>动态库</td>
+<td>Bundle</td>
+<td>resource_bundle</td>
+<td>会造成bundle中嵌套bundle</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>动态库</td>
+<td>Asset Log</td>
+<td>resources</td>
+<td>仅包含一种分辨率图片</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>动态库</td>
+<td>Asset Log</td>
+<td>resource_bundle</td>
+<td>仅包含一种分辨率图片，由于动态库本身图片资源是在自身framework中，不存在与其他pod库资源冲突的问题</td>
+<td>✔️</td>
+<td>调用方式再确认下</td>
+</tr>
+</tbody>
+</table>
+<p>关于resources 与 resource_bundle的区别在于：</p>
+<p>resource_bundles 允许定义当前 Pod 库的资源包的名称和文件。用 hash 的形式来声明，key 是 bundle 的名称，value 是需要包括的文件的通配 patterns。</p>
+<p>CocoaPods 官方强烈推荐使用 resource_bundles，因为用 key-value 可以避免相同名称资源的名称冲突。</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/7.png" alt=""></p>
+<p>使用 resources 来指定资源，被指定的资源只会简单的被 copy 到目标工程中（主工程），所以存在资源冲突的问题。</p>
+<h6 id="2-3-如何调用"><a href="#2-3-如何调用" class="headerlink" title="2.3 如何调用"></a>2.3 如何调用</h6><p>使用resource_bundle调用图片的方式与使用resources的有所不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let bundle = Bundle(url: Bundle.main.url(forResource: &quot;IconBundleModule&quot;, withExtension: &quot;bundle&quot;)!)</span><br><span class="line">let image = UIImage(named: &quot;es8_pearlwhite_side&quot;, in: bundle, compatibleWith: nil)</span><br><span class="line">       </span><br><span class="line">let imageView = UIImageView(frame: CGRect(x: 0, y: 100, width: 200, height: 100))</span><br><span class="line">imageView.image = image</span><br><span class="line">view.addSubview(imageView)</span><br></pre></td></tr></table></figure>
+<h5 id="3-IconFont"><a href="#3-IconFont" class="headerlink" title="3.IconFont"></a>3.IconFont</h5><p>针对于单色的图标，我们也可以用IconFont来管理：</p>
+<p>1.以tff的形式来管理图片，减少体积</p>
+<p>2.以<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">阿里IconFont</a>为例，生成tff文件所上传的svg限制单个大小为40KB</p>
+<p>3.在iOS项目中不支持多色的使用</p>
+<p>4.使用方式</p>
+<p>以下为几种使用方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// -----------------------------  未封装前用法  使用UILabel去展示 --------------------------------------------</span><br><span class="line">let label = UILabel(frame: CGRect(x: 30, y: 100, width: 50, height: 50))</span><br><span class="line">label.font = UIFont.init(name: &quot;iconfont&quot;, size: 50)</span><br><span class="line">label.text = &quot;\u&#123;e604&#125;&quot;</span><br><span class="line">view.addSubview(label)</span><br><span class="line">        </span><br><span class="line">// -----------------------------  EFIConFont  使用UILabel去展示 --------------------------------------------</span><br><span class="line">let iconlabel = UILabel(frame: CGRect(x: 30, y: 170, width: 50, height: 50))</span><br><span class="line">iconlabel.font = EFIconFont.antDesign.cake.font(size: 50)</span><br><span class="line">iconlabel.text = EFIconFont.antDesign.cake.unicode</span><br><span class="line">iconlabel.textAlignment = .right</span><br><span class="line">view.addSubview(iconlabel)</span><br><span class="line"></span><br><span class="line">// -----------------------------  EFIConFont  使用UIImageView去展示 --------------------------------------------</span><br><span class="line">let iconImgView = UIImageView(frame: CGRect(x: 30, y: 240, width: 50, height: 50))</span><br><span class="line">iconImgView.image = EFIconFont.antDesign.dessert.image(size: iconImgView.frame.size)</span><br><span class="line">view.addSubview(iconImgView)</span><br><span class="line">        </span><br><span class="line">// -----------------------------  EFIConFont  使用UIImageView去展示 --------------------------------------------</span><br><span class="line">let iconImgView1 = UIImageView(frame: CGRect(x: 100, y: 240, width: 50, height: 50))</span><br><span class="line">iconImgView1.image = EFIconFont.antDesign.dessert.image(size: iconImgView1.frame.size, foregroundColor: UIColor.red)</span><br><span class="line">view.addSubview(iconImgView1)</span><br><span class="line">        </span><br><span class="line">// -----------------------------  EFIConFont  使用富文本去展示 --------------------------------------------</span><br><span class="line">let iconAttributeLbl = UILabel(frame: CGRect(x: 30, y: 300, width: 50, height: 50))</span><br><span class="line">iconAttributeLbl.attributedText = EFIconFont.antDesign.dessert.attributedString(size: 50)</span><br><span class="line">iconAttributeLbl.textAlignment = .right</span><br><span class="line">view.addSubview(iconAttributeLbl)</span><br></pre></td></tr></table></figure>
+<h5 id="AssetLog-缓存影响…"><a href="#AssetLog-缓存影响…" class="headerlink" title="AssetLog 缓存影响…"></a>AssetLog 缓存影响…</h5>
       
     </div>
     <div class="article-footer">
