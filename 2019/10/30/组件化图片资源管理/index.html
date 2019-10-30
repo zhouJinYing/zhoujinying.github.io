@@ -17,20 +17,24 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>设置终端代理 | Hexo</title>
-  <meta name="description" content="分辨需要设置的代理 HTTP 形式： git clone https://github.com/owner/git.git   SSH 形式： git clone git@github.com:owner/git.git    一、HTTP 形式走 HTTP 代理12git config --global http.proxy &quot;http://127.0.0.1:8080&quot;git config -">
+  <title>组件化图片资源管理 | Hexo</title>
+  <meta name="description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 #####1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设置终端代理">
-<meta property="og:url" content="http://yoursite.com/2019/01/14/设置终端代理/index.html">
+<meta property="og:title" content="组件化图片资源管理">
+<meta property="og:url" content="http://yoursite.com/2019/10/30/组件化图片资源管理/index.html">
 <meta property="og:site_name" content="Romantic">
-<meta property="og:description" content="分辨需要设置的代理 HTTP 形式： git clone https://github.com/owner/git.git   SSH 形式： git clone git@github.com:owner/git.git    一、HTTP 形式走 HTTP 代理12git config --global http.proxy &quot;http://127.0.0.1:8080&quot;git config -">
+<meta property="og:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 #####1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T04:35:38.000Z">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/image1.png">
+<meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/4.png">
+<meta property="og:updated_time" content="2019-10-30T06:37:04.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设置终端代理">
-<meta name="twitter:description" content="分辨需要设置的代理 HTTP 形式： git clone https://github.com/owner/git.git   SSH 形式： git clone git@github.com:owner/git.git    一、HTTP 形式走 HTTP 代理12git config --global http.proxy &quot;http://127.0.0.1:8080&quot;git config -">
+<meta name="twitter:title" content="组件化图片资源管理">
+<meta name="twitter:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 #####1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根">
+<meta name="twitter:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/2019/01/14/设置终端代理/index.html">
+  <link rel="canonical" href="http://yoursite.com/2019/10/30/组件化图片资源管理/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
   
@@ -241,14 +245,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-设置终端代理" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <article id="post-组件化图片资源管理" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      设置终端代理
+      组件化图片资源管理
     </h1>
   
 
@@ -256,8 +260,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/01/14/设置终端代理/" class="article-date">
-	  <time datetime="2019-01-14T04:34:13.000Z" itemprop="datePublished">2019-01-14</time>
+	<a href="/2019/10/30/组件化图片资源管理/" class="article-date">
+	  <time datetime="2019-10-30T02:40:14.000Z" itemprop="datePublished">2019-10-30</time>
 	</a>
 </span>
         
@@ -265,27 +269,24 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/14/设置终端代理/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/30/组件化图片资源管理/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="分辨需要设置的代理"><a href="#分辨需要设置的代理" class="headerlink" title="分辨需要设置的代理"></a>分辨需要设置的代理</h2><ul>
-<li>HTTP 形式：<blockquote>
-<p>git clone <a href="https://github.com/owner/git.git" target="_blank" rel="noopener">https://github.com/owner/git.git</a></p>
-</blockquote>
-</li>
-<li>SSH 形式：<blockquote>
-<p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:owner/git.git</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="一、HTTP-形式"><a href="#一、HTTP-形式" class="headerlink" title="一、HTTP 形式"></a>一、HTTP 形式</h2><h3 id="走-HTTP-代理"><a href="#走-HTTP-代理" class="headerlink" title="走 HTTP 代理"></a>走 HTTP 代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy <span class="string">"http://127.0.0.1:8080"</span></span><br><span class="line">git config --global https.proxy <span class="string">"http://127.0.0.1:8080"</span></span><br></pre></td></tr></table></figure>
-<h3 id="走-socks5-代理（如-Shadowsocks）"><a href="#走-socks5-代理（如-Shadowsocks）" class="headerlink" title="走 socks5 代理（如 Shadowsocks）"></a>走 socks5 代理（如 Shadowsocks）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy <span class="string">"socks5://127.0.0.1:1080"</span></span><br><span class="line">git config --global https.proxy <span class="string">"socks5://127.0.0.1:1080"</span></span><br></pre></td></tr></table></figure>
-<h3 id="取消设置"><a href="#取消设置" class="headerlink" title="取消设置"></a>取消设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
-<h2 id="二、SSH-形式"><a href="#二、SSH-形式" class="headerlink" title="二、SSH 形式"></a>二、SSH 形式</h2><p>修改 <code>~/.ssh/config</code> 文件（不存在则新建）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 必须是 github.com</span><br><span class="line">Host github.com</span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   # 走 HTTP 代理</span><br><span class="line">   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=8080</span><br><span class="line">   # 走 socks5 代理（如 Shadowsocks）</span><br><span class="line">   # ProxyCommand nc -v -x 127.0.0.1:1080 %h %p</span><br></pre></td></tr></table></figure>
+        <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。</p>
+<p>#####1.图片集成方式<br>现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png" alt=""></p>
+<p>这样会造成安装的设备中同时存在@2x和@3x的图片。</p>
+<p>如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备分发，不会同时包含。（App Slicing）</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/image1.png" alt=""></p>
+<p>以下为实验结果：</p>
+<p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/4.png" alt=""></p>
+<p>结论：使用Asset Log取代Bundle管理图片的形式</p>
+<p>#####2.图片资源引用方式</p>
+<p>#####3.IconFont</p>
+<h5 id="AssetLog-缓存影响…"><a href="#AssetLog-缓存影响…" class="headerlink" title="AssetLog 缓存影响…"></a>AssetLog 缓存影响…</h5>
       
     </div>
     <div class="article-footer">
@@ -311,13 +312,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/01/14/NSTimer/" title="NSTimer"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2018/12/29/iOS内存泄漏检测/" title="iOS内存泄漏检测"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/09/12/UIButton-在粗体文本下的bug/" title="UIButton 在粗体文本下的bug"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
