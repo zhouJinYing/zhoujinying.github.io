@@ -18,20 +18,20 @@
   
   
   <title>组件化图片资源管理 | Hexo</title>
-  <meta name="description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 #####1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根">
+  <meta name="description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组件化图片资源管理">
 <meta property="og:url" content="http://yoursite.com/2019/10/30/组件化图片资源管理/index.html">
 <meta property="og:site_name" content="Romantic">
-<meta property="og:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 #####1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根">
+<meta property="og:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/image1.png">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/4.png">
-<meta property="og:updated_time" content="2019-10-30T06:37:04.474Z">
+<meta property="og:updated_time" content="2019-10-30T06:39:01.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件化图片资源管理">
-<meta name="twitter:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 #####1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根">
+<meta name="twitter:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备">
 <meta name="twitter:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://yoursite.com/2019/10/30/组件化图片资源管理/index.html">
@@ -276,7 +276,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。</p>
-<p>#####1.图片集成方式<br>现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。</p>
+<h5 id="1-图片集成方式"><a href="#1-图片集成方式" class="headerlink" title="1.图片集成方式"></a>1.图片集成方式</h5><p>现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。</p>
 <p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/bundleWay.png" alt=""></p>
 <p>这样会造成安装的设备中同时存在@2x和@3x的图片。</p>
 <p>如果使用Asset Catlog去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设备分发，不会同时包含。（App Slicing）</p>
@@ -284,9 +284,7 @@
 <p>以下为实验结果：</p>
 <p><img src="http://gitlab.com/1995zhouJinYing/document/raw/master/4.png" alt=""></p>
 <p>结论：使用Asset Log取代Bundle管理图片的形式</p>
-<p>#####2.图片资源引用方式</p>
-<p>#####3.IconFont</p>
-<h5 id="AssetLog-缓存影响…"><a href="#AssetLog-缓存影响…" class="headerlink" title="AssetLog 缓存影响…"></a>AssetLog 缓存影响…</h5>
+<h5 id="2-图片资源引用方式"><a href="#2-图片资源引用方式" class="headerlink" title="2.图片资源引用方式"></a>2.图片资源引用方式</h5><h5 id="3-IconFont"><a href="#3-IconFont" class="headerlink" title="3.IconFont"></a>3.IconFont</h5><h5 id="AssetLog-缓存影响…"><a href="#AssetLog-缓存影响…" class="headerlink" title="AssetLog 缓存影响…"></a>AssetLog 缓存影响…</h5>
       
     </div>
     <div class="article-footer">
