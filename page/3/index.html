@@ -17,16 +17,16 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>归档: 2019/1 | Hexo</title>
+  <title>Hexo</title>
   <meta property="og:type" content="website">
 <meta property="og:title" content="Romantic">
-<meta property="og:url" content="http://yoursite.com/archives/2019/01/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Romantic">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Romantic">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/archives/2019/01/index.html">
+  <link rel="canonical" href="http://yoursite.com/page/3/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Romantic" type="application/atom+xml">
   
@@ -234,60 +234,124 @@
 </aside>
 
   
+  <main class="main" role="main">
   
-<main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">归档: 2019/1</h1>
-	      <p class="text-muted">共 2 篇文章</p>
-	    </header>
-	    <div class="article-body">
-	      
   
+    <div class="content">
+  <article id="post-设计模式" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/13/设计模式/">设计模式</a>
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/07/13/设计模式/" class="article-date">
+	  <time datetime="2016-07-13T01:51:37.000Z" itemprop="datePublished">2016-07-13</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/07/13/设计模式/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>一、MVC设计模式</p>
+<p>1、模式分析</p>
+<p>Models（模型）：数据层，负责处理数据的数据接口层；</p>
+<p>Views（视图）：展示层，以UI开头的类基本属于Views；</p>
+<p>Controller：重控制器，负责Model与View之间连接，当用户对View操作时它负责去修改相应的model；当Model值发生变化时它负责更新对应的View；</p>
+<p>2、性能分析</p>
+<p>划分层次：View和Model实现了分离，但View和Controller耦合太厉害；</p>
+<p>可测性：划分不清楚，导致只有Model可进行测试；</p>
+<p>易用性：相较于其他设计模式，代码量少，易上手。</p>
+<p>3、模型分析图（摘自网络）<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model1.png" alt=""></p>
+<p>二、MVP设计模式</p>
+<p>1、模式分析</p>
+<p>Models：数据层</p>
+<p>ViewController：视图控制器，实际扮演View的角色</p>
+<p>Presenter：只负责更新数据和视图状态</p>
+<p>2、性能分析</p>
+<p>划分层次：划分了Presenter和Model以及简单的视图</p>
+<p>可测性：可通过View来测试大部分的业务逻辑</p>
+<p>易用性：思路清晰，但代码量较多</p>
+<p>3、模型分析图（摘自网络）<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model2.png" alt=""></p>
+<p>三、MVVM设计模式</p>
+<p>1、模式分析</p>
+<p>Model：数据访问层</p>
+<p>View：UI界面</p>
+<p>ViewModel：View的抽象，负责View与Model之间的信息转换</p>
+<p>2、性能分析</p>
+<p>划分层次：划分了Model、View、以及ModelView，与其他设计模式主要区别在于ModelView的划分。</p>
+<p>可测性： 因为ViewModel对View是分离的，测试简单。</p>
+<p>易用性： 简洁、易用性较强。</p>
+<p>3、模型分析图（摘自网络）<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model3.png" alt=""></p>
+<p>四、三种设计模式总结(附分析表)<br><img src="https://gitlab.com/1995zhouJinYing/document/raw/master/model4.png" alt=""></p>
+<p>1、就开发速度而言，Cocoa MVC是最好的架构选择方案</p>
+<p>2、MVP可测试性强、代码量大</p>
+<p>3、MVVM集合了上述方法的有点，可测试性很强。</p>
+<p>五、ReactiveCocoa</p>
+<p>结合了函数式编程、响应式编程使用RAC来解决问题，不需考虑调用顺序，直接考虑结果，代码高聚合，方便管理。</p>
+<p>当某些事件响应时，可通过RAC来处理某些业务逻辑，比如按钮的点击使用action，ScrollView滚动使用delegate，属性值改变使用KVO等系统提供的方式。</p>
+<p>六、体会</p>
+<p>通过在网上查找ReactiveCocoa的相关资料接触到RACSiganl信号类，之前未曾接触使用过，还是存在一些难度，不能透彻了解。对MVC、MVP、MVVM这三种设计模式已有一定了解，希望在以后能够结合实际项目，进行学以致用。</p>
+<p>七、重点参考资料</p>
+<p><1><a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html</a></1></p>
+<p><2><a href="http://blog.csdn.net/li_shuang_ls/article/details/50176891" target="_blank" rel="noopener">http://blog.csdn.net/li_shuang_ls/article/details/50176891</a></2></p>
+<p><3><a href="http://www.cocoachina.com/ios/20160108/14916.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20160108/14916.html</a></3></p>
+<p><4><a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="noopener">http://www.jianshu.com/p/87ef6720a096</a></4></p>
+<p><5><a href="https://objccn.io/issue-13-1/" target="_blank" rel="noopener">https://objccn.io/issue-13-1/</a></5></p>
+
+      
+    </div>
+    <div class="article-footer">
+      
+    </div>
+  </article>
+  
+</div>
+
+  
+
   
     
-    
-      
-      
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2019" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2019
-            </a>
-            <!-- <a href="/archives/2019" class="archive-year">2019</a> -->
-          </h3>
+    <nav class="bar bar-footer clearfix" data-stick-bottom="">
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/page/2/">
+                    <i class="icon icon-angle-left"></i>
+                    上一页
+                </a>
+            </li>
+            
+            
+            <li class="next disabled">
+                <a href="javascript:;">
+                    下一页
+                    <i class="icon icon-angle-right"></i>                    
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 3 of 3</div>
         </div>
-        <div id="collapse2019" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2019">
-        <div class="panel-body">
-          <div class="collection">
+    </nav>
     
-    
-<a href="/2019/01/14/NSTimer/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-01-14T04:38:18.000Z" itemprop="datePublished">2019-01-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> NSTimer
-</a>
-
-
-  
-    
-    
-    
-<a href="/2019/01/14/设置终端代理/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-01-14T04:34:13.000Z" itemprop="datePublished">2019-01-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 设置终端代理
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
-  	 	
+ 
 </main>
 
   <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
@@ -334,6 +398,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 })(jQuery);
 </script>
 
+
+
+
+   
 
 
 
