@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/5.png">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/6.png">
 <meta property="og:image" content="http://gitlab.com/1995zhouJinYing/document/raw/master/7.png">
-<meta property="og:updated_time" content="2019-10-30T09:02:27.473Z">
+<meta property="og:updated_time" content="2019-10-30T09:04:24.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件化图片资源管理">
 <meta name="twitter:description" content="背景目前项目App包体积较大，分析项目中图片资源占据比例较大，首先从图片方面进行优化。 1.图片集成方式现状：目前pod库中图片直接存放在bundle下，存在@2x,@3x图，通过bundle去访问图片资源。  这样会造成安装的设备中同时存在@2x和@3x的图片。 如果使用Asset Catlogs去管理图片，即下图使用.xcasset的形式，xcassets 里面的 @2x、@3x 会根据具体设">
@@ -300,8 +300,7 @@
 <th>图片管理方式</th>
 <th>引用方式</th>
 <th>分析</th>
-<th>是否建议使用</th>
-<th>备注</th>
+<th>使用建议</th>
 </tr>
 </thead>
 <tbody>
@@ -361,7 +360,6 @@
 <td>resource_bundle</td>
 <td>仅包含一种分辨率图片，由于动态库本身图片资源是在自身framework中，不存在与其他pod库资源冲突的问题</td>
 <td>✔️</td>
-<td>调用方式再确认下</td>
 </tr>
 </tbody>
 </table>
